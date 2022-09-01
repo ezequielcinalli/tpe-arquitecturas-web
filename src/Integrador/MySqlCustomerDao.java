@@ -3,7 +3,7 @@ package Integrador;
 import java.util.List;
 import java.util.Optional;
 
-public class MySqlCustomerDAO extends CustomerDAO {
+public class MySqlCustomerDao extends CustomerDAO {
 
     @Override
     public Optional<Customer> get(int id) {
