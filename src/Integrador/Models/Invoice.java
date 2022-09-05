@@ -25,4 +25,9 @@ public class Invoice {
         this.customerId = customerId;
     }
 
+    @Override
+    public String toString() {
+        return "Invoice [customerId=" + customerId + ", id=" + id + "]";
+    }
+
 }

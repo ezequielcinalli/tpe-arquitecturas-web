@@ -35,4 +35,8 @@ public class InvoiceProduct {
         this.amount = amount;
     }
 
+    @Override
+    public String toString() {
+        return "InvoiceProduct [amount=" + amount + ", invoiceId=" + invoiceId + ", productId=" + productId + "]";
+    }
 }
