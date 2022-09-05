@@ -8,6 +8,7 @@ import java.util.Optional;
 import Integrador.MyConnection;
 import Integrador.Interfaces.IInvoiceProductDao;
 import Integrador.Models.InvoiceProduct;
+import Integrador.Models.Product;
 
 public class MySqlInvoiceProductDao implements IInvoiceProductDao {
 
@@ -65,5 +66,11 @@ public class MySqlInvoiceProductDao implements IInvoiceProductDao {
             e.printStackTrace();
         }
     }
+
+	@Override
+	public Product getMostBilledProduct() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
