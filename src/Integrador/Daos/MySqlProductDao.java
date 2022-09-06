@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-import Integrador.MyConnection;
 import Integrador.Interfaces.IProductDao;
 import Integrador.Models.Product;
 
@@ -13,8 +12,8 @@ public class MySqlProductDao implements IProductDao {
 
     private Connection connection;
 
-    public MySqlProductDao() {
-        this.connection = MyConnection.getConnection();
+    public MySqlProductDao(Connection connection) {
+        this.connection = connection;
     }
 
     @Override

@@ -1,16 +1,16 @@
-package Integrador;
+package Integrador.Connections;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class MyConnection {
+public class MySqlConnection {
     private static String driver = "com.mysql.cj.jdbc.Driver";
     private static String uri = "jdbc:mysql://localhost:3306/integratorDB";
     private static Connection connection;
 
-    private MyConnection() {
+    private MySqlConnection() {
     }
 
     public static Connection getConnection() {

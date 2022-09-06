@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import Integrador.MyConnection;
 import Integrador.Interfaces.IInvoiceProductDao;
 import Integrador.Models.InvoiceProduct;
 import Integrador.Models.Product;
@@ -17,8 +16,8 @@ public class DerbyInvoiceProductDao implements IInvoiceProductDao {
 
     private Connection connection;
 
-    public DerbyInvoiceProductDao() {
-        this.connection = MyConnection.getConnection();
+    public DerbyInvoiceProductDao(Connection connection) {
+        this.connection = connection;
     }
 
     @Override

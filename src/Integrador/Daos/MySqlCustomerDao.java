@@ -7,15 +7,14 @@ import java.util.List;
 import java.util.Optional;
 
 import Integrador.Models.Customer;
-import Integrador.MyConnection;
 import Integrador.Interfaces.ICustomerDao;
 
 public class MySqlCustomerDao implements ICustomerDao {
 
     private Connection connection;
 
-    public MySqlCustomerDao() {
-        this.connection = MyConnection.getConnection();
+    public MySqlCustomerDao(Connection connection) {
+        this.connection = connection;
     }
 
     @Override
@@ -65,10 +64,10 @@ public class MySqlCustomerDao implements ICustomerDao {
         }
     }
 
-	@Override
-	public ArrayList<Customer> getCustomersOrderedByBilling() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public ArrayList<Customer> getCustomersOrderedByBilling() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 }

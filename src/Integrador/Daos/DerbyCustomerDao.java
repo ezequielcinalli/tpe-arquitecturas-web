@@ -1,5 +1,6 @@
 package Integrador.Daos;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -9,46 +10,52 @@ import Integrador.Models.Customer;
 
 public class DerbyCustomerDao implements ICustomerDao {
 
-	@Override
-	public Optional<Customer> get(int id) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
-	}
+    private Connection connection;
 
-	@Override
-	public List<Customer> getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public DerbyCustomerDao(Connection connection) {
+        this.connection = connection;
+    }
 
-	@Override
-	public void save(Customer t) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public Optional<Customer> get(int id) {
+        // TODO Auto-generated method stub
+        return Optional.empty();
+    }
 
-	@Override
-	public void update(Customer t) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public List<Customer> getAll() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	@Override
-	public void delete(Customer t) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void save(Customer t) {
+        // TODO Auto-generated method stub
 
-	@Override
-	public void createTable() {
-		// TODO Auto-generated method stub
-		
-	}
+    }
 
-	@Override
-	public ArrayList<Customer> getCustomersOrderedByBilling() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public void update(Customer t) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void delete(Customer t) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void createTable() {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public ArrayList<Customer> getCustomersOrderedByBilling() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 }

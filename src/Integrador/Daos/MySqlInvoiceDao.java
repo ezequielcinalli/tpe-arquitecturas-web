@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-import Integrador.MyConnection;
 import Integrador.Interfaces.IInvoiceDao;
 import Integrador.Models.Invoice;
 
@@ -13,8 +12,8 @@ public class MySqlInvoiceDao implements IInvoiceDao {
 
     private Connection connection;
 
-    public MySqlInvoiceDao() {
-        this.connection = MyConnection.getConnection();
+    public MySqlInvoiceDao(Connection connection) {
+        this.connection = connection;
     }
 
     @Override

@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import Integrador.MyConnection;
 import Integrador.Interfaces.IInvoiceProductDao;
 import Integrador.Models.InvoiceProduct;
 import Integrador.Models.Product;
@@ -17,8 +16,8 @@ public class MySqlInvoiceProductDao implements IInvoiceProductDao {
 
     private Connection connection;
 
-    public MySqlInvoiceProductDao() {
-        this.connection = MyConnection.getConnection();
+    public MySqlInvoiceProductDao(Connection connection) {
+        this.connection = connection;
     }
 
     @Override
