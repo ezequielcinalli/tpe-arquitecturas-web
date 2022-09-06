@@ -122,7 +122,15 @@ public class MySqlInvoiceProductDao implements IInvoiceProductDao {
     @Override
     public Product getMostBilledProduct() {
         Product result = null;
-        String select = "SELECT * FROM product LIMIT 1";
+        String select = """
+                SELECT p.*
+                FROM product p
+                JOIN invoice_product ip
+                ON p.id = ip.productId
+                WHERE p.value*ip.amount  = (SELECT MAX(p2.value*ip2.amount) FROM product p2
+                                            JOIN invoice_product ip2
+                                            ON p2.id = ip2.productId)
+                """;
         try (PreparedStatement ps = connection.prepareStatement(select)) {
             ResultSet rs = ps.executeQuery();
             if (rs.next())
