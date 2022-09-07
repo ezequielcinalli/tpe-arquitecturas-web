@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import Integrador.Interfaces.DaoFactory;
 import Integrador.Interfaces.ICustomerDao;
 import Integrador.Interfaces.IInvoiceProductDao;
-import Integrador.Interfaces.IProductDao;
 import Integrador.Models.Customer;
 import Integrador.Models.Product;
+import Integrador.Services.CsvReader;
 
 public class Main {
 
@@ -25,7 +25,7 @@ public class Main {
         Product mostBilledProduct = invoiceProductDao.getMostBilledProduct();
         System.out.println(mostBilledProduct);
         
-        Product p1 = new Product(1,"compu",1000);
+        //Product p1 = new Product(1,"compu",1000);
         //daoFactory.getProductDao().save(p1);
         System.out.println(daoFactory.getProductDao().get(1).toString());
         
@@ -44,6 +44,19 @@ public class Main {
     }
 
     public static void seedData(DaoFactory daoFactory) {
+    	final String basePath = "src\\Integrador\\Data\\";
+    	
+    	ArrayList<String[]> customers = CsvReader.ReadLinesFromFilePath(basePath + "Customers.csv");
+    	// TODO insert in database
+    	
+    	ArrayList<String[]> invoiceProducts = CsvReader.ReadLinesFromFilePath(basePath + "InvoiceProducts.csv");
+    	// TODO insert in database
+    	
+    	ArrayList<String[]> invoices = CsvReader.ReadLinesFromFilePath(basePath + "Invoices.csv");
+    	// TODO insert in database
+    	
+    	ArrayList<String[]> products = CsvReader.ReadLinesFromFilePath(basePath + "Products.csv");
+    	// TODO insert in database
     }
 
 }
