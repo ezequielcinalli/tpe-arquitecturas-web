@@ -1,6 +1,7 @@
 package Integrador;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import Integrador.Interfaces.DaoFactory;
 import Integrador.Interfaces.ICustomerDao;
@@ -17,7 +18,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        DaoFactory daoFactory = DaoFactory.getDAOFactory(DaoFactory.DERBY_JDBC);
+        DaoFactory daoFactory = DaoFactory.getDAOFactory(DaoFactory.MYSQL_JDBC);
 
         initializeDb(daoFactory);
         seedData(daoFactory);
@@ -33,7 +34,10 @@ public class Main {
 
     public static void initializeDb(DaoFactory daoFactory) {
         try {
-            daoFactory.getCustomerDao().createTable();
+        	if (daoFactory.HasCreatedTables())
+        		return;
+        		
+        	daoFactory.getCustomerDao().createTable();
             daoFactory.getInvoiceDao().createTable();
             daoFactory.getProductDao().createTable();
             daoFactory.getInvoiceProductDao().createTable();
@@ -44,6 +48,9 @@ public class Main {
     }
 
     public static void seedData(DaoFactory daoFactory) {
+    	if (daoFactory.HasCreatedData())
+    		return;
+    	
     	final String basePath = "src\\Integrador\\Data\\";
     	
     	ICustomerDao customerDao = daoFactory.getCustomerDao();

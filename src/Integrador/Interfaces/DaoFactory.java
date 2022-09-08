@@ -1,5 +1,7 @@
 package Integrador.Interfaces;
 
+import java.sql.SQLException;
+
 import Integrador.Factories.DerbyDAOFactory;
 import Integrador.Factories.MySqlDAOFactory;
 
@@ -26,5 +28,9 @@ public abstract class DaoFactory {
                 return null;
         }
     }
+    
+    public abstract boolean HasCreatedTables() throws SQLException;
+    
+    public abstract boolean HasCreatedData();
 
 }
