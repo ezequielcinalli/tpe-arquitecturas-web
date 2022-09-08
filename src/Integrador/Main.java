@@ -33,6 +33,9 @@ public class Main {
         //daoFactory.getProductDao().save(p1);
         System.out.println(daoFactory.getProductDao().get(1).toString());
         
+        //Invoice v1 = new Invoice(99, 2);
+        //daoFactory.getInvoiceDao().save(v1);
+        //System.out.println(daoFactory.getInvoiceDao().get(99).toString());
     }
 
     public static void initializeDb(DaoFactory daoFactory) {
