@@ -124,10 +124,12 @@ public class DerbyCustomerDao implements ICustomerDao {
         ArrayList<Customer> result = new ArrayList<Customer>();
         String select = """
                 SELECT c.*
-                FROM customer c join invoice i ON c.id = i.customerId 
-                JOIN invoice_product ip ON ip.invoiceId = i.id 
-                JOIN product p ON ip.productId = p.id group by c.id 
-                ORDER BY sum(p.value*ip.amount) DESC
+				FROM customer c 
+				join invoice i ON c.id = i.customerId 
+				JOIN invoice_product ip ON ip.invoiceId = i.id 
+				JOIN product p ON ip.productId = p.id 
+				group by c.id, c.NAME, c.EMAIL  
+				ORDER BY sum(p.value*ip.amount) DESC
                 """;
         try (PreparedStatement ps = connection.prepareStatement(select)) {
             ResultSet rs = ps.executeQuery();
