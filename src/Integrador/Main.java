@@ -20,16 +20,21 @@ public class Main {
 
         DaoFactory daoFactory = DaoFactory.getDAOFactory(DaoFactory.MYSQL_JDBC);
 
-        initializeDb(daoFactory);
-        seedData(daoFactory);
+        //initializeDb(daoFactory);
+        //seedData(daoFactory);
         
         ICustomerDao customerDao = daoFactory.getCustomerDao();
         ArrayList<Customer> customersOrderedByBilling = customerDao.getCustomersOrderedByBilling();
-        System.out.println(customersOrderedByBilling);
+        System.out.println("--------------Clientes ordenados por facturación--------------") ;
+        for (Customer c : customersOrderedByBilling) {
+        	System.out.println(c);
+        }
+        
 
+        System.out.println("------------------------------------------------------") ;
         IInvoiceProductDao invoiceProductDao = daoFactory.getInvoiceProductDao();
         Product mostBilledProduct = invoiceProductDao.getMostBilledProduct();
-        System.out.println(mostBilledProduct);
+        System.out.println("Producto que más recaudó: " + mostBilledProduct);
     }
 
     public static void initializeDb(DaoFactory daoFactory) {
