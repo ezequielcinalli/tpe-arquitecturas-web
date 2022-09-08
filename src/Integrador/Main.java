@@ -12,7 +12,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        DaoFactory daoFactory = DaoFactory.getDAOFactory(DaoFactory.DERBY_JDBC);
+        DaoFactory daoFactory = DaoFactory.getDAOFactory(DaoFactory.MYSQL_JDBC);
+        //DaoFactory daoFactory = DaoFactory.getDAOFactory(DaoFactory.DERBY_JDBC);
         initializeDb(daoFactory);
         seedData(daoFactory);
 
