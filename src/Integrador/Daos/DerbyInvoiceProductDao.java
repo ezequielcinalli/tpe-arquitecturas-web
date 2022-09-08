@@ -102,7 +102,7 @@ public class DerbyInvoiceProductDao implements IInvoiceProductDao {
     @Override
     public void createTable() {
         String table = """
-                    CREATE TABLE IF NOT EXISTS invoice_product(
+                    CREATE TABLE invoice_product(
                     invoiceId int,
                     productId int,
                     amount int,

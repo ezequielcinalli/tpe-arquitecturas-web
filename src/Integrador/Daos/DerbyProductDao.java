@@ -1,6 +1,8 @@
 package Integrador.Daos;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,8 +31,16 @@ public class DerbyProductDao implements IProductDao {
 
     @Override
     public void save(Product t) {
-        // TODO Auto-generated method stub
-
+    	String select = "INSERT INTO " + entityName + " (id,name,value) VALUES (?,?,?)";
+        try (PreparedStatement ps = connection.prepareStatement(select)) {
+        	ps.setInt(1, t.getId());
+            ps.setString(2, t.getName());
+            ps.setFloat(3, t.getValue());
+            ps.executeUpdate();
+            connection.commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -47,8 +57,19 @@ public class DerbyProductDao implements IProductDao {
 
     @Override
     public void createTable() {
-        // TODO Auto-generated method stub
-
+    	String table = """
+                CREATE TABLE product(
+                    id int,
+                    name varchar(45),
+                    value float,
+                    PRIMARY KEY(id)
+                )""";
+        try {
+            this.connection.prepareStatement(table).execute();
+            connection.commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }

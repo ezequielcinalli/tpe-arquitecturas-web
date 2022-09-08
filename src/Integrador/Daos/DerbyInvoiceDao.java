@@ -1,6 +1,8 @@
 package Integrador.Daos;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,8 +31,15 @@ public class DerbyInvoiceDao implements IInvoiceDao {
 
     @Override
     public void save(Invoice t) {
-        // TODO Auto-generated method stub
-
+    	String select = "INSERT INTO " + entityName + " (id,customerId) VALUES (?,?)";
+        try (PreparedStatement ps = connection.prepareStatement(select)) {
+        	ps.setInt(1, t.getId());
+            ps.setInt(2, t.getCustomerId());
+            ps.executeUpdate();
+            connection.commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -47,8 +56,19 @@ public class DerbyInvoiceDao implements IInvoiceDao {
 
     @Override
     public void createTable() {
-        // TODO Auto-generated method stub
-
+    	String table = """
+                CREATE TABLE invoice(
+                    id int,
+                    customerId int,
+                    PRIMARY KEY(id),
+                    FOREIGN KEY (customerId) REFERENCES customer(id)
+                )""";
+        try {
+            this.connection.prepareStatement(table).execute();
+            connection.commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }

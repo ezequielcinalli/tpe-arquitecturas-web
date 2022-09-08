@@ -63,7 +63,6 @@ public class MySqlProductDao implements IProductDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override

@@ -17,7 +17,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        DaoFactory daoFactory = DaoFactory.getDAOFactory(DaoFactory.MYSQL_JDBC);
+        DaoFactory daoFactory = DaoFactory.getDAOFactory(DaoFactory.DERBY_JDBC);
 
         initializeDb(daoFactory);
         seedData(daoFactory);
@@ -29,14 +29,6 @@ public class Main {
         IInvoiceProductDao invoiceProductDao = daoFactory.getInvoiceProductDao();
         Product mostBilledProduct = invoiceProductDao.getMostBilledProduct();
         System.out.println(mostBilledProduct);
-        
-        //Product p1 = new Product(1,"compu",1000);
-        //daoFactory.getProductDao().save(p1);
-        System.out.println(daoFactory.getProductDao().get(1).toString());
-        
-        //Invoice v1 = new Invoice(99, 2);
-        //daoFactory.getInvoiceDao().save(v1);
-        //System.out.println(daoFactory.getInvoiceDao().get(99).toString());
     }
 
     public static void initializeDb(DaoFactory daoFactory) {

@@ -103,7 +103,7 @@ public class DerbyCustomerDao implements ICustomerDao {
     @Override
     public void createTable() {
     	String table = """
-                CREATE TABLE IF NOT EXISTS customer(
+                CREATE TABLE customer(
                     id int,
                     name varchar(500),
                     email varchar(150),
