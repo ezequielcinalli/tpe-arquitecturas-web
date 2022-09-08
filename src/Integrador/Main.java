@@ -21,7 +21,7 @@ public class Main {
 
         initializeDb(daoFactory);
         seedData(daoFactory);
-
+        
         ICustomerDao customerDao = daoFactory.getCustomerDao();
         ArrayList<Customer> customersOrderedByBilling = customerDao.getCustomersOrderedByBilling();
         System.out.println(customersOrderedByBilling);
