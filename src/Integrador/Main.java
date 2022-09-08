@@ -43,8 +43,8 @@ public class Main {
         try {
             daoFactory.getCustomerDao().createTable();
             daoFactory.getInvoiceDao().createTable();
-            daoFactory.getInvoiceProductDao().createTable();
             daoFactory.getProductDao().createTable();
+            daoFactory.getInvoiceProductDao().createTable();
             System.out.println("Tables created with success!");
         } catch (Exception e) {
             System.out.println(e);
