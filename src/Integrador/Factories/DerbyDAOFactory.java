@@ -45,22 +45,11 @@ public class DerbyDAOFactory extends DaoFactory {
 	@Override
 	public boolean HasCreatedTables() throws SQLException {
 		boolean exists = false;
-        String select = """
-        		SELECT * 
-				FROM information_schema.tables
-				WHERE table_schema = 'integratorDB' 
-				    AND table_name = 'customer'
-				FETCH FIRST 1 ROWS ONLY
-        		""";
-        var connection = getConnection();
-        try (PreparedStatement ps = connection.prepareStatement(select)) {
-            ResultSet rs = ps.executeQuery();
-            if (rs.next())
-            	exists = true;
-            connection.commit();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+		var connection = getConnection();
+		DatabaseMetaData dbm = connection.getMetaData();
+        ResultSet rs = dbm.getTables(null, "APP", "CUSTOMER", null);
+        if (rs.next())
+            exists = true;
         return exists;
 	}
 
