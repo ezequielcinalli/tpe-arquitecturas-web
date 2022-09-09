@@ -1,5 +1,6 @@
 package Integrador.Factories;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,22 +24,22 @@ public class MySqlDAOFactory extends DaoFactory {
 
     @Override
     public ICustomerDao getCustomerDao() {
-        return new MySqlCustomerDao(MySqlConnection.getConnection());
+        return new MySqlCustomerDao(getConnection());
     }
 
     @Override
     public IInvoiceDao getInvoiceDao() {
-        return new MySqlInvoiceDao(MySqlConnection.getConnection());
+        return new MySqlInvoiceDao(getConnection());
     }
 
     @Override
     public IInvoiceProductDao getInvoiceProductDao() {
-        return new MySqlInvoiceProductDao(MySqlConnection.getConnection());
+        return new MySqlInvoiceProductDao(getConnection());
     }
 
     @Override
     public IProductDao getProductDao() {
-        return new MySqlProductDao(MySqlConnection.getConnection());
+        return new MySqlProductDao(getConnection());
     }
 
 	@Override
@@ -51,7 +52,7 @@ public class MySqlDAOFactory extends DaoFactory {
 				    AND table_name = 'customer'
 				LIMIT 1;
         		""";
-        var connection = MySqlConnection.getConnection();
+        var connection = getConnection();
         try (PreparedStatement ps = connection.prepareStatement(select)) {
             ResultSet rs = ps.executeQuery();
             if (rs.next())
@@ -67,6 +68,11 @@ public class MySqlDAOFactory extends DaoFactory {
 	public boolean HasCreatedData() {
 		List<Customer> customers = getCustomerDao().getAll();
     	return !customers.isEmpty();
+	}
+
+	@Override
+	public Connection getConnection() {
+		return MySqlConnection.getConnection();
 	}
 
 }

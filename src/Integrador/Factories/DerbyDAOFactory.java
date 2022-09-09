@@ -1,5 +1,6 @@
 package Integrador.Factories;
 
+import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,22 +24,22 @@ public class DerbyDAOFactory extends DaoFactory {
 
     @Override
     public ICustomerDao getCustomerDao() {
-        return new DerbyCustomerDao(DerbyConnection.getConnection());
+        return new DerbyCustomerDao(getConnection());
     }
 
     @Override
     public IInvoiceDao getInvoiceDao() {
-        return new DerbyInvoiceDao(DerbyConnection.getConnection());
+        return new DerbyInvoiceDao(getConnection());
     }
 
     @Override
     public IInvoiceProductDao getInvoiceProductDao() {
-        return new DerbyInvoiceProductDao(DerbyConnection.getConnection());
+        return new DerbyInvoiceProductDao(getConnection());
     }
 
     @Override
     public IProductDao getProductDao() {
-        return new DerbyProductDao(DerbyConnection.getConnection());
+        return new DerbyProductDao(getConnection());
     }
 
 	@Override
@@ -51,7 +52,7 @@ public class DerbyDAOFactory extends DaoFactory {
 				    AND table_name = 'customer'
 				LIMIT 1;
         		""";
-        var connection = MySqlConnection.getConnection();
+        var connection = getConnection();
         try (PreparedStatement ps = connection.prepareStatement(select)) {
             ResultSet rs = ps.executeQuery();
             if (rs.next())
@@ -67,6 +68,11 @@ public class DerbyDAOFactory extends DaoFactory {
 	public boolean HasCreatedData() {
 		List<Customer> customers = getCustomerDao().getAll();
     	return !customers.isEmpty();
+	}
+
+	@Override
+	public Connection getConnection() {
+		return DerbyConnection.getConnection();
 	}
 
 }
