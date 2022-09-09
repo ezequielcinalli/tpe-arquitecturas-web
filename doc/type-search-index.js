@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"Integrador.Interfaces","l":"IProductDao"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"Integrador.Interfaces","l":"IDao"},{"p":"Integrador.Interfaces","l":"IProductDao"}];updateSearchResults();
