@@ -5,6 +5,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+* Conexion MySql
+*/
 public class MySqlConnection {
     private static String driver = "com.mysql.cj.jdbc.Driver";
     private static String uri = "jdbc:mysql://localhost:3306/integratorDB";
@@ -13,6 +16,9 @@ public class MySqlConnection {
     private MySqlConnection() {
     }
 
+    /**
+     * Devuelve una conexion a MySql implementando el patron Singleton
+     */
     public static Connection getConnection() {
         if (connection != null) {
             return connection;

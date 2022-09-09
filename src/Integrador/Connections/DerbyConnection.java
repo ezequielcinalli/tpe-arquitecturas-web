@@ -5,6 +5,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+* Conexion Derby
+*/
 public class DerbyConnection {
     private static String driver = "org.apache.derby.jdbc.EmbeddedDriver";
     private static String uri = "jdbc:derby:integratorDB;create=true";
@@ -13,6 +16,9 @@ public class DerbyConnection {
     private DerbyConnection() {
     }
 
+    /**
+    * Devuelve una conexion a Derby implementando el patron Singleton
+    */
     public static Connection getConnection() {
         if (connection != null) {
             return connection;
