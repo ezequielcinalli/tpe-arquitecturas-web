@@ -2,7 +2,9 @@ package Integrador.Daos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,14 +21,34 @@ public class DerbyProductDao implements IProductDao {
 
     @Override
     public Optional<Product> get(int id) {
-        // TODO Auto-generated method stub
-        return Optional.empty();
+        Product result = null;
+        String select = "SELECT * FROM " + entityName + " WHERE id = ?";
+        try (PreparedStatement ps = connection.prepareStatement(select)) {
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next())
+                result = createEntityFromResultSet(rs);
+            connection.commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result == null ? Optional.empty() : Optional.of(result);
+
     }
 
     @Override
     public List<Product> getAll() {
-        // TODO Auto-generated method stub
-        return null;
+   	 List<Product> result = new ArrayList<Product>();
+     String select = "SELECT * FROM " + entityName;
+     try (PreparedStatement ps = connection.prepareStatement(select)) {
+         ResultSet rs = ps.executeQuery();
+         while (rs.next())
+             result.add(createEntityFromResultSet(rs));
+         connection.commit();
+     } catch (SQLException e) {
+         e.printStackTrace();
+     }
+     return result;
     }
 
     @Override
@@ -45,14 +67,28 @@ public class DerbyProductDao implements IProductDao {
 
     @Override
     public void update(Product t) {
-        // TODO Auto-generated method stub
+     	String select = "UPDATE " + entityName + " SET value=?  WHERE id=?";
+        try (PreparedStatement ps = connection.prepareStatement(select)) {
+            ps.setFloat(1, t.getValue());
+            ps.setInt(2, t.getId());
+            ps.executeUpdate();
+            connection.commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
     @Override
     public void delete(Product t) {
-        // TODO Auto-generated method stub
-
+     	String select = "DELETE FROM " + entityName + " WHERE id=?";
+        try (PreparedStatement ps = connection.prepareStatement(select)) {
+            ps.setInt(1, t.getId());
+            ps.executeUpdate();
+            connection.commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -72,4 +108,7 @@ public class DerbyProductDao implements IProductDao {
         }
     }
 
+    private Product createEntityFromResultSet(ResultSet rs) throws SQLException {
+        return new Product(rs.getInt(1), rs.getString(2), rs.getInt(3));
+    }
 }
