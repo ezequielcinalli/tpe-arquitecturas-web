@@ -1,6 +1,7 @@
 package Integrador;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import Integrador.Interfaces.DaoFactory;
 import Integrador.Interfaces.ICustomerDao;
@@ -16,11 +17,14 @@ import Integrador.Services.CsvReader;
 public class Main {
 
     public static void main(String[] args) {
+    	
+    	// Change between factory implementations
+    	
+    	// DaoFactory daoFactory = DaoFactory.getDAOFactory(DaoFactory.DERBY_JDBC);
+        DaoFactory daoFactory = DaoFactory.getDAOFactory(DaoFactory.MYSQL_JDBC);
 
-        DaoFactory daoFactory = DaoFactory.getDAOFactory(DaoFactory.DERBY_JDBC);
-
-        //initializeDb(daoFactory);
-        //seedData(daoFactory);
+        initializeDb(daoFactory);
+        seedData(daoFactory);
         
         ICustomerDao customerDao = daoFactory.getCustomerDao();
         ArrayList<Customer> customersOrderedByBilling = customerDao.getCustomersOrderedByBilling();
@@ -28,7 +32,6 @@ public class Main {
         for (Customer c : customersOrderedByBilling) {
         	System.out.println(c);
         }
-        
 
         System.out.println("------------------------------------------------------") ;
         IInvoiceProductDao invoiceProductDao = daoFactory.getInvoiceProductDao();
@@ -38,7 +41,10 @@ public class Main {
 
     public static void initializeDb(DaoFactory daoFactory) {
         try {
-            daoFactory.getCustomerDao().createTable();
+        	if (daoFactory.HasCreatedTables())
+        		return;
+        		
+        	daoFactory.getCustomerDao().createTable();
             daoFactory.getInvoiceDao().createTable();
             daoFactory.getProductDao().createTable();
             daoFactory.getInvoiceProductDao().createTable();
@@ -49,6 +55,9 @@ public class Main {
     }
 
     public static void seedData(DaoFactory daoFactory) {
+    	if (daoFactory.HasCreatedData())
+    		return;
+    	
     	final String basePath = "src\\Integrador\\Data\\";
     	
     	ICustomerDao customerDao = daoFactory.getCustomerDao();

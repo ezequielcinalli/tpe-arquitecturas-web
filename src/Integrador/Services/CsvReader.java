@@ -5,8 +5,16 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 
+/**
+* Lector de archivos .csv
+*/
 public class CsvReader {
 
+	/**
+	* Obtiene todas las lineas de un archivo .csv y separa el contenido cortando por las "comas"
+	* @param relativeUri Uri relativa desde la carpeta raiz del proyecto
+	* @return Lista de renglones, donde cada renglon es un arreglo de strings (uno por cada columna del .csv)
+	*/
 	public static ArrayList<String[]> ReadLinesFromFilePath(String relativeUri){
 		String absoluteUri = new File("").getAbsolutePath();
         String line = "";
