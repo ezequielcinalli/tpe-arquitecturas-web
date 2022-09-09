@@ -50,7 +50,7 @@ public class DerbyDAOFactory extends DaoFactory {
 				FROM information_schema.tables
 				WHERE table_schema = 'integratorDB' 
 				    AND table_name = 'customer'
-				LIMIT 1;
+				FETCH FIRST 1 ROWS ONLY
         		""";
         var connection = getConnection();
         try (PreparedStatement ps = connection.prepareStatement(select)) {
