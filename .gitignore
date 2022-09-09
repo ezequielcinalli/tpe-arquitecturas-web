@@ -10,6 +10,8 @@ local.properties
 .settings/
 .loadpath
 .recommenders
+derby.log
+doc/
 
 # External tool builders
 .externalToolBuilders/

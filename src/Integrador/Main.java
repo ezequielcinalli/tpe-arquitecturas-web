@@ -17,11 +17,14 @@ import Integrador.Services.CsvReader;
 public class Main {
 
     public static void main(String[] args) {
-
+    	
+    	// Change between factory implementations
+    	
+    	// DaoFactory daoFactory = DaoFactory.getDAOFactory(DaoFactory.DERBY_JDBC);
         DaoFactory daoFactory = DaoFactory.getDAOFactory(DaoFactory.MYSQL_JDBC);
 
-        //initializeDb(daoFactory);
-        //seedData(daoFactory);
+        initializeDb(daoFactory);
+        seedData(daoFactory);
         
         ICustomerDao customerDao = daoFactory.getCustomerDao();
         ArrayList<Customer> customersOrderedByBilling = customerDao.getCustomersOrderedByBilling();
@@ -29,7 +32,6 @@ public class Main {
         for (Customer c : customersOrderedByBilling) {
         	System.out.println(c);
         }
-        
 
         System.out.println("------------------------------------------------------") ;
         IInvoiceProductDao invoiceProductDao = daoFactory.getInvoiceProductDao();
