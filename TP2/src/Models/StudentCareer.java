@@ -1,9 +1,18 @@
 @Entity
 public class StudentCareer{
     @Id
-    public int studentId;
+    @ManyToOne
+    @JoinColumn(name = "studentId", referencedColumnName = "id")
+    public Student student;
+
     @Id
-    public int careerId;
+    @ManyToOne
+    @JoinColumn(name = "careerId", referencedColumnName = "id")
+    public Career career;
+
+    @Column
     public Date signUpDate;
+
+    @Column
     public Date graduationDate;
 }
