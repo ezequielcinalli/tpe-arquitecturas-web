@@ -1,39 +1,46 @@
 package Repositories;
 
 import java.util.List;
-
+import javax.persistence.EntityManager;
 import Interfaces.ICareerRepository;
 import Models.Career;
 
 public class CareerRepository implements ICareerRepository {
 
-	@Override
-	public Career get(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	EntityManager entityManager;
+	
+	
+	public CareerRepository(EntityManager entityManager) {
+		this.entityManager = entityManager;
 	}
 
 	@Override
-	public List<Career> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public Career get(int id) {
+		return entityManager.find(Career.class, id);
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Career> getAll() {
+		return (List<Career>) entityManager.createQuery("SELECT c FROM Career c").getResultList();
+	}
+
 
 	@Override
 	public void save(Career t) {
-		// TODO Auto-generated method stub
-		
+		entityManager.persist(t);
+	
 	}
 
 	@Override
 	public void update(Career t) {
-		// TODO Auto-generated method stub
+		entityManager.merge(t);
 		
 	}
 
 	@Override
 	public void delete(Career t) {
-		// TODO Auto-generated method stub
+		entityManager.remove(entityManager.contains(t) ? t : entityManager.merge(t));
 		
 	}
 

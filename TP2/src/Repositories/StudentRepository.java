@@ -20,7 +20,7 @@ public class StudentRepository implements IStudentRepository{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Student> getAll() {
-		return (List<Student>) entityManager.createQuery("SELECT s FROM Student s").getResultList();;
+		return (List<Student>) entityManager.createQuery("SELECT s FROM Student s").getResultList();
 	}
 
 	@Override
