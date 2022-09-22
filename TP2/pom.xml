@@ -4,6 +4,18 @@
   <artifactId>TP2</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <dependencies>
+  <!-- https://mvnrepository.com/artifact/org.apache.derby/derby -->
+	<dependency>
+	    <groupId>org.apache.derby</groupId>
+	    <artifactId>derby</artifactId>
+	    <version>10.15.2.0</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.apache.derby/derbytools -->
+	<dependency>
+	    <groupId>org.apache.derby</groupId>
+	    <artifactId>derbytools</artifactId>
+	    <version>10.15.2.0</version>
+	</dependency>
 	  <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 	<dependency>
 		<groupId>mysql</groupId>
