@@ -20,4 +20,35 @@ public class Career{
 
     @Column
     public String name;
+    
+    public Career() {
+    	super();
+	}
+
+	public Career(List<StudentCareer> inscriptions, String name) {
+		super();
+		this.inscriptions = inscriptions;
+		this.name = name;
+	}
+
+	public List<StudentCareer> getInscriptions() {
+		return inscriptions;
+	}
+
+	public void setInscriptions(List<StudentCareer> inscriptions) {
+		this.inscriptions = inscriptions;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getId() {
+		return id;
+	}
+    
 }
