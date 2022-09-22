@@ -13,13 +13,13 @@ import javax.persistence.OneToMany;
 public class Career{
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    public int id;
+    private int id;
 
+    @Column(nullable = false)
+    private String name;
+    
     @OneToMany(mappedBy = "career")
     private List<StudentCareer> inscriptions;
-
-    @Column
-    public String name;
     
     public Career() {
     	super();

@@ -10,9 +10,9 @@ public class StudentCareerId implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
-	public int studentId;
+	private int studentId;
 
-    public int careerId;
+    private int careerId;
     
     public StudentCareerId() {
     }

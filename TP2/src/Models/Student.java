@@ -16,7 +16,7 @@ import org.apache.derby.iapi.services.locks.C_LockFactory;
 
 @Entity
 public class Student{
-	 enum Genre{
+	private enum Genre{
 	    Masculino,
 	    Femenino,
 	    NosabeNocontesta,
@@ -24,26 +24,26 @@ public class Student{
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    public int id;
+    private int id;
 
-    @Column
-    public String name;
+    @Column(nullable = false)
+    private String name;
 
-    @Column
-    public String surname;
+    @Column(nullable = false)
+    private String surname;
 
-    @Column
-    public Date birthdate;
+    @Column(nullable = false)
+    private Date birthdate;
 
-    @Column
-    public Genre genre;
+    @Column(nullable = false)
+    private Genre genre;
 
-    @Column
-    public long dni;
+    @Column(nullable = false)
+    private long dni;
 
     @ManyToOne
-    @JoinColumn(name="cityId",referencedColumnName="id")
-    public City city;
+    @JoinColumn(name="cityId",referencedColumnName="id",nullable = false)
+    private City city;
 
     @OneToMany(mappedBy = "student")
     private List<StudentCareer> careers;

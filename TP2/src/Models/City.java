@@ -10,10 +10,10 @@ import javax.persistence.Id;
 public class City{
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    public int id;
+    private int id;
 
-    @Column
-    public String name;
+    @Column(nullable = false)
+    private String name;
     
     public City() {
     	super();

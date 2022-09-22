@@ -25,7 +25,7 @@ public class StudentCareer{
     @JoinColumn(name = "careerId", referencedColumnName = "id")
     public Career career;
 
-    @Column
+    @Column(nullable = false)
     public Date signUpDate;
 
     @Column
