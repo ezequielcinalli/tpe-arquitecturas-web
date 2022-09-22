@@ -42,8 +42,8 @@ public class Student{
     public long dni;
 
     @ManyToOne
-    @JoinColumn(name="id")
-    public City cityId;
+    @JoinColumn(name="cityId",referencedColumnName="id")
+    public City city;
 
     @OneToMany(mappedBy = "student")
     private List<StudentCareer> careers;
@@ -52,7 +52,7 @@ public class Student{
     	super();
 	}
 
-	public Student(String name, String surname, Date birthdate, Genre genre, long dni, City cityId,
+	public Student(String name, String surname, Date birthdate, Genre genre, long dni, City city,
 			List<StudentCareer> careers) {
 		super();
 		this.name = name;
@@ -60,7 +60,7 @@ public class Student{
 		this.birthdate = birthdate;
 		this.genre = genre;
 		this.dni = dni;
-		this.cityId = cityId;
+		this.city = city;
 		this.careers = careers;
 	}
 
@@ -104,12 +104,12 @@ public class Student{
 		this.dni = dni;
 	}
 
-	public City getCityId() {
-		return cityId;
+	public City getcity() {
+		return city;
 	}
 
-	public void setCityId(City cityId) {
-		this.cityId = cityId;
+	public void setcity(City city) {
+		this.city = city;
 	}
 
 	public List<StudentCareer> getCareers() {
