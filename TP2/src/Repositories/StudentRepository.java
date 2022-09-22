@@ -1,40 +1,42 @@
 package Repositories;
 
 import java.util.List;
-
+import javax.persistence.EntityManager;
 import Interfaces.IStudentRepository;
 import Models.Student;
 
 public class StudentRepository implements IStudentRepository{
-
-	@Override
-	public Student get(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	EntityManager entityManager;
+	
+	public StudentRepository(EntityManager entityManager) {
+		this.entityManager = entityManager;
 	}
 
 	@Override
+	public Student get(int id) {
+		return entityManager.find(Student.class, id);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
 	public List<Student> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<Student>) entityManager.createQuery("SELECT s FROM Student s").getResultList();;
 	}
 
 	@Override
 	public void save(Student t) {
-		// TODO Auto-generated method stub
-		
+		entityManager.persist(t);
 	}
 
 	@Override
 	public void update(Student t) {
-		// TODO Auto-generated method stub
+		entityManager.merge(t);
 		
 	}
 
 	@Override
 	public void delete(Student t) {
-		// TODO Auto-generated method stub
-		
+		entityManager.remove(entityManager.contains(t) ? t : entityManager.merge(t));
 	}
 
 }

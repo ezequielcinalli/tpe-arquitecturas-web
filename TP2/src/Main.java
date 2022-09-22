@@ -2,12 +2,21 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.hibernate.sql.ordering.antlr.GeneratedOrderByFragmentRenderer;
+
+import Models.Student;
+import Repositories.StudentRepository;
+
 public class Main {
 
 	public static void main(String[] args) {
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("MySql");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		entityManager.getTransaction().begin();
+
+		System.out.println("test:");
+		StudentRepository studentRepository = new StudentRepository(entityManager);
+		System.out.println(studentRepository.get(1));
 
 		//Code for services 
 		System.out.println("--------------Dar de alta un estudiante--------------") ;
