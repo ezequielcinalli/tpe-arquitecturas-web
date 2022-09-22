@@ -3,19 +3,24 @@ package Models;
 import java.sql.Date;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 
 @Entity
 public class StudentCareer{
-    @Id
+	
+	@EmbeddedId
+    private StudentCareerId key;
+	
+	@MapsId("studentId")
     @ManyToOne
     @JoinColumn(name = "studentId", referencedColumnName = "id")
     public Student student;
 
-    @Id
+	@MapsId("careerId")
     @ManyToOne
     @JoinColumn(name = "careerId", referencedColumnName = "id")
     public Career career;
