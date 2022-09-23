@@ -2,9 +2,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import org.hibernate.sql.ordering.antlr.GeneratedOrderByFragmentRenderer;
-
-import Models.Student;
 import Repositories.StudentRepository;
 
 public class Main {
@@ -12,11 +9,8 @@ public class Main {
 	public static void main(String[] args) {
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("MySql");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
-		entityManager.getTransaction().begin();
 
-		System.out.println("test:");
 		StudentRepository studentRepository = new StudentRepository(entityManager);
-		System.out.println(studentRepository.get(1));
 
 		//Code for services 
 		System.out.println("--------------Dar de alta un estudiante--------------") ;
@@ -26,6 +20,7 @@ public class Main {
 		System.out.println("--------------Recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple.--------------") ;
 
 		System.out.println("--------------Recuperar un estudiante, en base a su número de libreta universitaria.--------------") ;
+		System.out.println(studentRepository.get(1));
 
 		System.out.println("--------------Recuperar todos los estudiantes, en base a su género.--------------") ;
 
@@ -37,8 +32,6 @@ public class Main {
 				+ "inscriptos y egresados por año. Se deben ordenar las carreras alfabéticamente, y presentar\n"
 				+ "los años de manera cronológica.--------------") ;
 		
-
-		entityManager.getTransaction().commit();
 		entityManager.close();
 		entityManagerFactory.close();
 	}
