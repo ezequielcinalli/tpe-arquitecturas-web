@@ -63,6 +63,18 @@ public class Student{
 		this.city = city;
 		this.careers = careers;
 	}
+	
+	
+
+	public Student(String name, String surname, Date birthdate, Genre genre, long dni, City city) {
+		super();
+		this.name = name;
+		this.surname = surname;
+		this.birthdate = birthdate;
+		this.genre = genre;
+		this.dni = dni;
+		this.city = city;
+	}
 
 	public String getName() {
 		return name;
@@ -123,6 +135,14 @@ public class Student{
 	public int getId() {
 		return id;
 	}
+
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", name=" + name + ", surname=" + surname + ", birthdate=" + birthdate + ", genre="
+				+ genre + ", dni=" + dni + ", city=" + city + "]";
+	}
+	
+	
     
 }
 

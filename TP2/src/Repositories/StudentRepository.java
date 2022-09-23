@@ -39,4 +39,8 @@ public class StudentRepository implements IStudentRepository{
 		entityManager.remove(entityManager.contains(t) ? t : entityManager.merge(t));
 	}
 
-}
+	@SuppressWarnings("unchecked")
+	public List<Student> getStudentsOrderBySurname() {
+		return (List<Student>) entityManager.createQuery("SELECT s FROM Student s ORDER BY s.surname, s.name").getResultList();
+	}
+	}

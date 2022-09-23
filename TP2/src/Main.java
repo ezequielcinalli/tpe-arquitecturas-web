@@ -1,7 +1,13 @@
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import Models.Student;
 import Repositories.StudentRepository;
 
 public class Main {
@@ -14,10 +20,12 @@ public class Main {
 
 		//Code for services 
 		System.out.println("--------------Dar de alta un estudiante--------------") ;
-
+	
 		System.out.println("--------------Matricular un estudiante en una carrera--------------") ;
 
-		System.out.println("--------------Recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple.--------------") ;
+		System.out.println("--------------Recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple.(Apellido, nombre)--------------") ;
+		List<Student> res = studentRepository.getStudentsOrderBySurname() ;
+		res.forEach(d -> System.out.println(d));
 
 		System.out.println("--------------Recuperar un estudiante, en base a su número de libreta universitaria.--------------") ;
 		System.out.println(studentRepository.get(1));
