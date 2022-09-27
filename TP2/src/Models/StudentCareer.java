@@ -74,5 +74,10 @@ public class StudentCareer{
 	public void setGraduationDate(Date graduationDate) {
 		this.graduationDate = graduationDate;
 	}
+	
+	@Override
+	public String toString() {
+		return "StudentCareer [carrerId=" + career + ", studentId=" + student + ", GraduationDate=" + graduationDate + "signUpDate=" + signUpDate +"]";
+	}
     
 }

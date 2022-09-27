@@ -4,6 +4,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import Interfaces.ICareerRepository;
 import Models.Career;
+import Models.StudentCareer;
 
 public class CareerRepository implements ICareerRepository {
 
@@ -42,6 +43,11 @@ public class CareerRepository implements ICareerRepository {
 	public void delete(Career t) {
 		entityManager.remove(entityManager.contains(t) ? t : entityManager.merge(t));
 		
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Career> careersSortedByStudents(){
+		return  (List<Career>) entityManager.createQuery("SELECT c FROM Career c JOIN c. GROUP BY sc.career.id ORDER BY count(sc.student.id)").getResultList();
 	}
 
 }

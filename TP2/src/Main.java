@@ -7,7 +7,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import Dtos.CareerWithInscriptionsDto;
 import Models.Student;
+import Models.StudentCareer;
+import Repositories.StudentCareerRepository;
 import Repositories.StudentRepository;
 
 public class Main {
@@ -17,7 +20,7 @@ public class Main {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
 		StudentRepository studentRepository = new StudentRepository(entityManager);
-
+		StudentCareerRepository studentCareerRepository = new StudentCareerRepository(entityManager);
 		//Code for services 
 		System.out.println("--------------Dar de alta un estudiante--------------") ;
 	
@@ -33,6 +36,9 @@ public class Main {
 		System.out.println("--------------Recuperar todos los estudiantes, en base a su género.--------------") ;
 
 		System.out.println("--------------Recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad de inscriptos.--------------") ;
+		//List<CareerWithInscriptionsDto> r = studentCareerRepository.careersSortedByStudents();
+		//r.forEach(d -> System.out.println(d));
+
 
 		System.out.println("--------------Recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia--------------") ;
 
