@@ -2,16 +2,9 @@ package Repositories;
 
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Join;
-import javax.persistence.criteria.Root;
-import javax.persistence.metamodel.EntityType;
-import javax.persistence.metamodel.Metamodel;
 
 import Dtos.StudentsByCityDto;
 import Interfaces.IStudentRepository;
-import Models.City;
 import Models.Student;
 
 public class StudentRepository implements IStudentRepository{
