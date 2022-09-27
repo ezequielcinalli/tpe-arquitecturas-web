@@ -2,7 +2,16 @@ package Repositories;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
+import javax.persistence.criteria.Root;
+import javax.persistence.metamodel.EntityType;
+import javax.persistence.metamodel.Metamodel;
+
+import Dtos.StudentsByCityDto;
 import Interfaces.IStudentRepository;
+import Models.City;
 import Models.Student;
 
 public class StudentRepository implements IStudentRepository{
@@ -43,4 +52,10 @@ public class StudentRepository implements IStudentRepository{
 	public List<Student> getStudentsOrderBySurname() {
 		return (List<Student>) entityManager.createQuery("SELECT s FROM Student s ORDER BY s.surname, s.name").getResultList();
 	}
+
+	@Override
+	public List<StudentsByCityDto> getStudentsByCityOnCareer(int careerId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
+}

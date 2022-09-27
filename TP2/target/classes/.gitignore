@@ -1,5 +1,3 @@
-/META-INF/
-/Models/
-/Connection/
-/Repositories/
 /Dtos/
+/Interfaces/
+/Repositories/
