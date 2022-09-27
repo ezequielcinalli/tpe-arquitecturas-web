@@ -2,39 +2,44 @@ package Repositories;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import Interfaces.ICityRepository;
 import Models.City;
 
 public class CityRepository implements ICityRepository {
-
+	
+EntityManager entityManager;
+	
+	
+	public CityRepository(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
+	
 	@Override
 	public City get(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return entityManager.find(City.class, id);
 	}
-
+	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<City> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<City>) entityManager.createQuery("SELECT c FROM city c").getResultList();
 	}
 
 	@Override
 	public void save(City t) {
-		// TODO Auto-generated method stub
-		
+		entityManager.persist(t);	
 	}
 
 	@Override
 	public void update(City t) {
-		// TODO Auto-generated method stub
-		
+		entityManager.merge(t);
 	}
 
 	@Override
 	public void delete(City t) {
-		// TODO Auto-generated method stub
-		
+		entityManager.remove(entityManager.contains(t) ? t : entityManager.merge(t));
 	}
 
 }

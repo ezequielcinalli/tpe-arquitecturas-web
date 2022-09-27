@@ -2,6 +2,8 @@ package Repositories;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+
+import Dtos.StudentsByCityDto;
 import Interfaces.IStudentRepository;
 import Models.Student;
 
@@ -43,4 +45,10 @@ public class StudentRepository implements IStudentRepository{
 	public List<Student> getStudentsOrderBySurname() {
 		return (List<Student>) entityManager.createQuery("SELECT s FROM Student s ORDER BY s.surname, s.name").getResultList();
 	}
+
+	@Override
+	public List<StudentsByCityDto> getStudentsByCityOnCareer(int careerId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
+}
