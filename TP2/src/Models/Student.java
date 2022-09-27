@@ -14,13 +14,10 @@ import javax.persistence.OneToMany;
 
 import org.apache.derby.iapi.services.locks.C_LockFactory;
 
+ 
 @Entity
 public class Student{
-	private enum Genre{
-	    Masculino,
-	    Femenino,
-	    NosabeNocontesta,
-	 };
+	
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
