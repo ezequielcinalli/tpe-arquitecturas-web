@@ -5,15 +5,12 @@ import java.util.List;
 public class CareerReportDto {
 
 	private String name;
-	private List<StudentInscriptionDto> inscriptions;
-	private List<StudentGraduationDto> graduations;
+	private List<StudentsFromCareerByYearDto> studentsByYear;
 	
-	public CareerReportDto(String name, List<StudentInscriptionDto> inscriptions,
-			List<StudentGraduationDto> graduations) {
+	public CareerReportDto(String name, List<StudentsFromCareerByYearDto> studentsByYear) {
 		super();
 		this.name = name;
-		this.inscriptions = inscriptions;
-		this.graduations = graduations;
+		this.studentsByYear = studentsByYear;
 	}
 
 	public String getName() {
@@ -24,20 +21,12 @@ public class CareerReportDto {
 		this.name = name;
 	}
 
-	public List<StudentInscriptionDto> getInscriptions() {
-		return inscriptions;
+	public List<StudentsFromCareerByYearDto> getStudentsByYear() {
+		return studentsByYear;
 	}
 
-	public void setInscriptions(List<StudentInscriptionDto> inscriptions) {
-		this.inscriptions = inscriptions;
-	}
-
-	public List<StudentGraduationDto> getGraduations() {
-		return graduations;
-	}
-
-	public void setGraduations(List<StudentGraduationDto> graduations) {
-		this.graduations = graduations;
+	public void setStudentsByYear(List<StudentsFromCareerByYearDto> studentsByYear) {
+		this.studentsByYear = studentsByYear;
 	}
 	
 }
