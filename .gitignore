@@ -12,6 +12,7 @@ local.properties
 .recommenders
 derby.log
 doc/
+.idea/
 
 # External tool builders
 .externalToolBuilders/
