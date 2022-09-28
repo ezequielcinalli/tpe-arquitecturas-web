@@ -8,6 +8,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import Dtos.CareerWithInscriptionsDto;
+import Dtos.StudentDto;
 import Models.Student;
 import Models.StudentCareer;
 import Repositories.StudentCareerRepository;
@@ -41,7 +42,9 @@ public class Main {
 
 
 		System.out.println("--------------Recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia--------------") ;
-
+		List<StudentDto> studentDtos = studentRepository.getStudentsByCityAndCareer(1, 1);
+		studentDtos.forEach(x -> System.out.println(x));
+		
 		System.out.println("-------------- Generar un reporte de las carreras, que para cada carrera incluya información de los\n"
 				+ "inscriptos y egresados por año. Se deben ordenar las carreras alfabéticamente, y presentar\n"
 				+ "los años de manera cronológica.--------------") ;

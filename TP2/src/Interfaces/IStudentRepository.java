@@ -2,11 +2,11 @@ package Interfaces;
 
 import java.util.List;
 
-import Dtos.StudentsByCityDto;
+import Dtos.StudentDto;
 import Models.Student;
 
 public interface IStudentRepository extends IRepositoryBase<Student> {
 	
-	List<StudentsByCityDto> getStudentsByCityOnCareer(int careerId);
+	List<StudentDto> getStudentsByCityAndCareer(int careerId, int cityId);
 
 }

@@ -2,8 +2,9 @@ package Repositories;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
-import Dtos.StudentsByCityDto;
+import Dtos.StudentDto;
 import Interfaces.IStudentRepository;
 import Models.Student;
 
@@ -47,8 +48,15 @@ public class StudentRepository implements IStudentRepository{
 	}
 
 	@Override
-	public List<StudentsByCityDto> getStudentsByCityOnCareer(int careerId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<StudentDto> getStudentsByCityAndCareer(int careerId, int cityId) {
+		TypedQuery<StudentDto> query = entityManager.createQuery("""
+			SELECT new Dtos.StudentDto(CONCAT(s.name, ' ', s.surname)) 
+			FROM Student s 
+			JOIN StudentCareer sc ON s.id = sc.key.studentId 
+			WHERE sc.key.careerId = :careerId AND s.city.id = :cityId
+		""", StudentDto.class);
+		query.setParameter("careerId", careerId);
+		query.setParameter("cityId", cityId);
+		return query.getResultList();
 	}
 }
