@@ -3,10 +3,10 @@ package Dtos;
 public class CareerWithInscriptionsDto {
 
 	private String nameCareer;
-	private int quantityInscriptions;
+	private long quantityInscriptions;
 	
 
-	public CareerWithInscriptionsDto(String nameCareer, int quantityInscriptions) {
+	public CareerWithInscriptionsDto(String nameCareer, long quantityInscriptions) {
 		super();
 		this.nameCareer = nameCareer;
 		this.quantityInscriptions = quantityInscriptions;
@@ -20,7 +20,7 @@ public class CareerWithInscriptionsDto {
 		this.nameCareer = nameCareer;
 	}
 
-	public int getQuantityInscriptions() {
+	public long getQuantityInscriptions() {
 		return quantityInscriptions;
 	}
 
@@ -28,4 +28,8 @@ public class CareerWithInscriptionsDto {
 		this.quantityInscriptions = quantityInscriptions;
 	}
 	
+	@Override
+	public String toString() {
+		return "Career: " + nameCareer + " Quantity inscriptions:" + quantityInscriptions;
+	}
 }

@@ -3,6 +3,7 @@ package Repositories;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import Dtos.CareerWithInscriptionsDto;
 import Interfaces.IStudentCareerRepository;
@@ -45,9 +46,8 @@ public class StudentCareerRepository implements IStudentCareerRepository {
 	
 
 	public List<CareerWithInscriptionsDto> careersSortedByStudents(){
-		List<CareerWithInscriptionsDto> result =  entityManager.createQuery("SELECT new CareerWithInscriptionsDto(c.name,1) FROM Career c",CareerWithInscriptionsDto.class).getResultList();
-		return result;
-		//return  (List<CareerWithInscriptionsDto>) entityManager.createQuery("SELECT new CareerWithInscriptionsDto(c.name,count(sc.student.id)) FROM StudentCareer sc JOIN sc.career c GROUP BY sc.career.id ORDER BY count(sc.student.id)",CareerWithInscriptionsDto.class).getResultList();
+		TypedQuery<CareerWithInscriptionsDto> result =  entityManager.createQuery("SELECT new Dtos.CareerWithInscriptionsDto(c.name,COUNT(sc.student)) FROM StudentCareer sc JOIN sc.career c GROUP BY sc.career.id ORDER BY count(sc.student.id)",CareerWithInscriptionsDto.class);
+		return result.getResultList();
 	}
 
 }

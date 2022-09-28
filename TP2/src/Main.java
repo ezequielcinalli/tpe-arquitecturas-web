@@ -37,8 +37,8 @@ public class Main {
 		System.out.println("--------------Recuperar todos los estudiantes, en base a su género.--------------") ;
 
 		System.out.println("--------------Recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad de inscriptos.--------------") ;
-		//List<CareerWithInscriptionsDto> r = studentCareerRepository.careersSortedByStudents();
-		//r.forEach(d -> System.out.println(d));
+		List<CareerWithInscriptionsDto> r = studentCareerRepository.careersSortedByStudents();
+		r.forEach(d -> System.out.println(d));
 
 
 		System.out.println("--------------Recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia--------------") ;
