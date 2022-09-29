@@ -32,6 +32,7 @@ public class Main {
 		System.out.println(studentRepository.get(1));
 
 		System.out.println("--------------Recuperar todos los estudiantes, en base a su género.--------------") ;
+		//Genre newGenre = Genre.Femenino;
 		Genre newGenre = Genre.Masculino;
 		System.out.println(studentRepository.getStudentsByGenre(newGenre));
 
