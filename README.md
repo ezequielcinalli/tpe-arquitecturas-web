@@ -22,3 +22,15 @@ Password: (vacio)
 Puerto: 3306
 
 DerbyDb no tiene credenciales de acceso.
+
+## Segunda entrega
+
+### Instrucciones para ejecutar
+
+Crear base de datos "integrator2DB" dentro de MySql
+### Aclaracion
+
+Las credenciales para MySql son:
+Usuario: root
+Password: (vacio)
+Puerto: 3306
