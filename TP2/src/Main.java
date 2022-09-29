@@ -6,6 +6,7 @@ import Dtos.StudentDto;
 import Factories.Factory;
 import Interfaces.IStudentCareerRepository;
 import Interfaces.IStudentRepository;
+import Models.Genre;
 import Models.Student;
 
 public class Main {
@@ -25,17 +26,18 @@ public class Main {
 
 		System.out.println("--------------Recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple.(Apellido, nombre)--------------") ;
 		List<Student> res = studentRepository.getStudentsOrderBySurname() ;
-		res.forEach(d -> System.out.println(d));
+		//res.forEach(d -> System.out.println(d));
 
 		System.out.println("--------------Recuperar un estudiante, en base a su número de libreta universitaria.--------------") ;
 		System.out.println(studentRepository.get(1));
 
 		System.out.println("--------------Recuperar todos los estudiantes, en base a su género.--------------") ;
+		Genre newGenre = Genre.Masculino;
+		System.out.println(studentRepository.getStudentsByGenre(newGenre));
 
 		System.out.println("--------------Recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad de inscriptos.--------------") ;
 		List<CareerWithInscriptionsDto> r = studentCareerRepository.careersSortedByStudents();
 		r.forEach(d -> System.out.println(d));
-
 
 		System.out.println("--------------Recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia--------------") ;
 		List<StudentDto> studentDtos = studentRepository.getStudentsByCityAndCareer(1, 1);

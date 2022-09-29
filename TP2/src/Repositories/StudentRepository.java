@@ -6,6 +6,7 @@ import javax.persistence.TypedQuery;
 
 import Dtos.StudentDto;
 import Interfaces.IStudentRepository;
+import Models.Genre;
 import Models.Student;
 
 public class StudentRepository implements IStudentRepository{
@@ -58,5 +59,11 @@ public class StudentRepository implements IStudentRepository{
 		query.setParameter("careerId", careerId);
 		query.setParameter("cityId", cityId);
 		return query.getResultList();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Student> getStudentsByGenre(Genre genre) {
+		return (List<Student>) entityManager.createQuery("SELECT s FROM Student s WHERE s.genre = :gen", Student.class).setParameter("gen", Genre.Masculino.ordinal()).getResultList();
 	}
 }
