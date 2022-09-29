@@ -9,6 +9,7 @@ import javax.persistence.Persistence;
 
 import Dtos.CareerWithInscriptionsDto;
 import Dtos.StudentDto;
+import Models.Genre;
 import Models.Student;
 import Models.StudentCareer;
 import Repositories.StudentCareerRepository;
@@ -29,12 +30,14 @@ public class Main {
 
 		System.out.println("--------------Recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple.(Apellido, nombre)--------------") ;
 		List<Student> res = studentRepository.getStudentsOrderBySurname() ;
-		res.forEach(d -> System.out.println(d));
+//		res.forEach(d -> System.out.println(d));
 
 		System.out.println("--------------Recuperar un estudiante, en base a su número de libreta universitaria.--------------") ;
 		System.out.println(studentRepository.get(1));
 
 		System.out.println("--------------Recuperar todos los estudiantes, en base a su género.--------------") ;
+		Genre newGenre = Genre.Masculino;
+		System.out.println(studentRepository.getStudentsByGenre(newGenre));
 
 		System.out.println("--------------Recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad de inscriptos.--------------") ;
 		List<CareerWithInscriptionsDto> r = studentCareerRepository.careersSortedByStudents();
