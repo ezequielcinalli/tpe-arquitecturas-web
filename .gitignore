@@ -15,6 +15,7 @@ doc/
 .idea/
 *.iml
 target/
+integrator2DB/
 
 # External tool builders
 .externalToolBuilders/
