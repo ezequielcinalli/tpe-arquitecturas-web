@@ -1,27 +1,23 @@
-import java.sql.Date;
-import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import java.util.List;
 
 import Dtos.CareerWithInscriptionsDto;
 import Dtos.StudentDto;
+import Factories.Factory;
+import Interfaces.IStudentCareerRepository;
+import Interfaces.IStudentRepository;
 import Models.Student;
-import Models.StudentCareer;
-import Repositories.StudentCareerRepository;
-import Repositories.StudentRepository;
 
 public class Main {
 
 	public static void main(String[] args) {
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("MySql");
-		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		
+		var factory = Factory.getFactory(Factory.MYSQL);
+		//var factory = Factory.getFactory(Factory.DERBY);
 
-		StudentRepository studentRepository = new StudentRepository(entityManager);
-		StudentCareerRepository studentCareerRepository = new StudentCareerRepository(entityManager);
+		IStudentRepository studentRepository = factory.getStudentRepository();
+		IStudentCareerRepository studentCareerRepository = factory.getStudentCareerRepository();
+		
 		//Code for services 
 		System.out.println("--------------Dar de alta un estudiante--------------") ;
 	
@@ -48,9 +44,6 @@ public class Main {
 		System.out.println("-------------- Generar un reporte de las carreras, que para cada carrera incluya información de los\n"
 				+ "inscriptos y egresados por año. Se deben ordenar las carreras alfabéticamente, y presentar\n"
 				+ "los años de manera cronológica.--------------") ;
-		
-		entityManager.close();
-		entityManagerFactory.close();
 	}
 
 }
