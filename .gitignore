@@ -13,6 +13,7 @@ local.properties
 derby.log
 doc/
 .idea/
+*.iml
 
 # External tool builders
 .externalToolBuilders/
