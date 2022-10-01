@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ICareerRepository extends IRepositoryBase<Career> {
 
-    List<CareerReportDto> careersInformationInscriptionsAndGraduates();
+    
 }

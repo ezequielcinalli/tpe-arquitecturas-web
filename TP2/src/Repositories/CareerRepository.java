@@ -53,10 +53,6 @@ public class CareerRepository implements ICareerRepository {
 		return  (List<Career>) entityManager.createQuery("SELECT c FROM Career c JOIN c. GROUP BY sc.career.id ORDER BY count(sc.student.id)").getResultList();
 	}
 	
-	public List<CareerReportDto> careersInformationInscriptionsAndGraduates(){
-//		List<CareerReportDto> list = entityManager.createQuery("SELECT new Dtos.CareerReportDto(c.name) FROM Career c").getResultList();
-//		return list;
-		return null;
-	}
+	
 
 }

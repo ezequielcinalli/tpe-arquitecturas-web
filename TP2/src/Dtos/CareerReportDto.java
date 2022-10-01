@@ -4,29 +4,47 @@ import java.util.List;
 
 public class CareerReportDto {
 
-	private String name;
-	private List<StudentsFromCareerByYearDto> studentsByYear;
+	private String nameCareer;
+	private int year ;
+	private List<String> enrolled;
+	private List<String> graduated;
 	
-	public CareerReportDto(String name, List<StudentsFromCareerByYearDto> studentsByYear) {
+	
+	public CareerReportDto(String nameCareer, int year) {
 		super();
-		this.name = name;
-		this.studentsByYear = studentsByYear;
+		this.nameCareer = nameCareer;
+		this.year = year;
 	}
-
-	public String getName() {
-		return name;
+	public CareerReportDto(String nameCareer, int year, List<String> enrolled, List<String> graduated) {
+		super();
+		this.nameCareer = nameCareer;
+		this.year = year;
+		this.enrolled = enrolled;
+		this.graduated = graduated;
 	}
-
-	public void setName(String name) {
-		this.name = name;
+	public String getNameCareer() {
+		return nameCareer;
 	}
-
-	public List<StudentsFromCareerByYearDto> getStudentsByYear() {
-		return studentsByYear;
+	public void setNameCareer(String nameCareer) {
+		this.nameCareer = nameCareer;
 	}
-
-	public void setStudentsByYear(List<StudentsFromCareerByYearDto> studentsByYear) {
-		this.studentsByYear = studentsByYear;
+	public int getYear() {
+		return year;
+	}
+	public void setYear(int year) {
+		this.year = year;
+	}
+	public List<String> getEnrolled() {
+		return enrolled;
+	}
+	public void setEnrolled(List<String> enrolled) {
+		this.enrolled = enrolled;
+	}
+	public List<String> getGraduated() {
+		return graduated;
+	}
+	public void setGraduated(List<String> graduated) {
+		this.graduated = graduated;
 	}
 	
 }

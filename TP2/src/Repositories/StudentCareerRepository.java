@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import Dtos.CareerReportDto;
 import Dtos.CareerWithInscriptionsDto;
 import Interfaces.IStudentCareerRepository;
 import Models.Student;
@@ -50,4 +51,10 @@ public class StudentCareerRepository implements IStudentCareerRepository {
 		return result.getResultList();
 	}
 
+	public List<CareerReportDto> careersInformationInscriptionsAndGraduates(){
+		
+		List<CareerReportDto> list = entityManager.createQuery("SELECT new Dtos.CareerReportDto(c.career.name, year(c.signUpDate)) FROM StudenCareer c", CareerReportDto.class).getResultList();
+		return list;
+		
+	}
 }

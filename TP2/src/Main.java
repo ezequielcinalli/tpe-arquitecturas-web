@@ -33,7 +33,7 @@ public class Main {
 		Student studentService2 = studentRepository.getAll().get(0);
 		Career careerService2 = careerRepository.getAll().get(0);
 		StudentCareer studentCareer = new StudentCareer(studentService2, careerService2, new Date(2000,1,1), new Date(2005,1,1));
-		studentCareerRepository.save(studentCareer);
+		//studentCareerRepository.save(studentCareer);
 
 		System.out.println("--------------Recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple.(Apellido, nombre)--------------") ;
 		List<Student> res = studentRepository.getStudentsOrderBySurname() ;
@@ -57,7 +57,7 @@ public class Main {
 		System.out.println("-------------- Generar un reporte de las carreras, que para cada carrera incluya información de los\n"
 				+ "inscriptos y egresados por año. Se deben ordenar las carreras alfabéticamente, y presentar\n"
 				+ "los años de manera cronológica.--------------") ;
-		System.out.println(careerRepository.careersInformationInscriptionsAndGraduates());
+		System.out.println(studentCareerRepository.careersInformationInscriptionsAndGraduates());
 	}
 
 }
