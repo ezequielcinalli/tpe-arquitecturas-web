@@ -35,7 +35,6 @@ public class StudentRepository implements IStudentRepository{
 	@Override
 	public void update(Student t) {
 		entityManager.merge(t);
-		
 	}
 
 	@Override

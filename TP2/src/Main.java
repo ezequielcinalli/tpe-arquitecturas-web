@@ -57,6 +57,7 @@ public class Main {
 		System.out.println("-------------- Generar un reporte de las carreras, que para cada carrera incluya información de los\n"
 				+ "inscriptos y egresados por año. Se deben ordenar las carreras alfabéticamente, y presentar\n"
 				+ "los años de manera cronológica.--------------") ;
+		System.out.println(careerRepository.careersInformationInscriptionsAndGraduates());
 	}
 
 }
