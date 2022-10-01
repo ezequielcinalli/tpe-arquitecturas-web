@@ -24,7 +24,7 @@ EntityManager entityManager;
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<City> getAll() {
-		return (List<City>) entityManager.createQuery("SELECT c FROM city c").getResultList();
+		return (List<City>) entityManager.createQuery("SELECT c FROM City c").getResultList();
 	}
 
 	@Override
