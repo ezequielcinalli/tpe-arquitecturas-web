@@ -16,23 +16,25 @@ import Models.Student;
 import Models.StudentCareer;
 
 public class Main {
-	 static Factory factory;
-	 static IStudentRepository studentRepository;
-	 static ICityRepository cityRepository;
-	 static ICareerRepository careerRepository;
-	 static IStudentCareerRepository studentCareerRepository;
+	
+	static Factory factory;
+	static IStudentRepository studentRepository;
+	static ICityRepository cityRepository;
+	static ICareerRepository careerRepository;
+	static IStudentCareerRepository studentCareerRepository;
+	
 	public static void main(String[] args) {
 		initialize(Factory.MYSQL);
-//		initialize(Factory.DERBY);
+		//initialize(Factory.DERBY);
 		factory.getEntityManager().getTransaction().begin();	
 		
-//		serviceA();
-//		serviceB();
-//		serviceC();
-//		serviceD();
-//		serviceE();
-//		serviceF();
-//		serviceG();
+		serviceA();
+		serviceB();
+		serviceC();
+		serviceD();
+		serviceE();
+		serviceF();
+		serviceG();
 		service3();
 		
 		factory.getEntityManager().getTransaction().commit();
@@ -62,30 +64,36 @@ public class Main {
 		StudentCareer studentCareer = new StudentCareer(studentService2, careerService2, new Date(2000,1,1), new Date(2005,1,1));
 		studentCareerRepository.save(studentCareer);
 	}
+	
 	public static void serviceC(){
 		System.out.println("--------------Recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple.(Apellido, nombre)--------------") ;
 		List<Student> res = studentRepository.getStudentsOrderBySurname() ;
 		res.forEach(d -> System.out.println(d));
 	}
+	
 	public static void serviceD(){
 		System.out.println("--------------Recuperar un estudiante, en base a su número de libreta universitaria.--------------") ;
 		System.out.println(studentRepository.get(1));
 	}
+	
 	public static void serviceE(){
 		System.out.println("--------------Recuperar todos los estudiantes, en base a su género.--------------") ;
 		Genre newGenre = Genre.Masculino;
 		System.out.println(studentRepository.getStudentsByGenre(newGenre));
 	}
+	
 	public static void serviceF(){
 		System.out.println("--------------Recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad de inscriptos.--------------") ;
 		List<CareerWithInscriptionsDto> r = studentCareerRepository.careersSortedByStudents();
 		r.forEach(d -> System.out.println(d));
 	}
+	
 	public static void serviceG(){
 		System.out.println("--------------Recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia--------------") ;
 		List<StudentDto> studentDtos = studentRepository.getStudentsByCityAndCareer(1, 1);
 		studentDtos.forEach(x -> System.out.println(x));
 	}
+	
 	public static void service3(){
 		System.out.println("-------------- Generar un reporte de las carreras, que para cada carrera incluya información de los\n"
 				+ "inscriptos y egresados por año. Se deben ordenar las carreras alfabéticamente, y presentar\n"
