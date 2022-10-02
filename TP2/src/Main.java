@@ -90,7 +90,7 @@ public class Main {
 	
 	public static void serviceG(){
 		System.out.println("--------------Recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia--------------") ;
-		List<StudentDto> studentDtos = studentRepository.getStudentsByCityAndCareer(1, 1);
+		List<StudentDto> studentDtos = studentRepository.getStudentsByCityAndCareer(1, 101);
 		studentDtos.forEach(x -> System.out.println(x));
 	}
 	
