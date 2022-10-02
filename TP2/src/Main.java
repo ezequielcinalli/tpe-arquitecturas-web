@@ -23,16 +23,17 @@ public class Main {
 	 static IStudentCareerRepository studentCareerRepository;
 	public static void main(String[] args) {
 		initialize(Factory.MYSQL);
+//		initialize(Factory.DERBY);
 		factory.getEntityManager().getTransaction().begin();	
 		
-		serviceA();
+//		serviceA();
 //		serviceB();
 //		serviceC();
 //		serviceD();
 //		serviceE();
 //		serviceF();
 //		serviceG();
-//		service3();
+		service3();
 		
 		factory.getEntityManager().getTransaction().commit();
 		factory.getEntityManager().close();	
@@ -51,6 +52,7 @@ public class Main {
 		City cityNewStudent = cityRepository.getAll().get(0);
 		Student newStudent = new Student("Name", "Surname", new Date(2000, 01, 01), Genre.Masculino, 30100200, cityNewStudent);
 		studentRepository.save(newStudent);
+		System.out.println("Estudiante agregado con exito!");
 	}
 	
 	public static void serviceB(){

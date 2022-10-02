@@ -1,5 +1,8 @@
 package Dtos;
 
+import net.bytebuddy.implementation.ToStringMethod;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class CareerReportDto {
@@ -14,6 +17,14 @@ public class CareerReportDto {
 		super();
 		this.nameCareer = nameCareer;
 		this.year = year;
+		
+		this.enrolled = new ArrayList<String>();
+		enrolled.add("Mock enrolled 1");
+		enrolled.add("Mock enrolled 2");
+		
+		this.graduated = new ArrayList<String>();
+		graduated.add("Mock graduated 1");
+		graduated.add("Mock graduated 2");
 	}
 	public CareerReportDto(String nameCareer, int year, List<String> enrolled, List<String> graduated) {
 		super();
@@ -46,5 +57,14 @@ public class CareerReportDto {
 	public void setGraduated(List<String> graduated) {
 		this.graduated = graduated;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "CareerReportDto{" +
+				"nameCareer='" + nameCareer + '\'' +
+				", year=" + year +
+				", enrolled=" + enrolled +
+				", graduated=" + graduated +
+				'}';
+	}
 }
