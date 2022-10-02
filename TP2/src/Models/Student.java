@@ -18,7 +18,7 @@ import org.apache.derby.iapi.services.locks.C_LockFactory;
 public class Student{
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
 
     @Column(nullable = false)
