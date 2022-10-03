@@ -15,6 +15,8 @@ Password: (vacio)
 Puerto: 3306
 
 ### Instrucciones para ejecutar Derby
+Al ejecutar el main la base se crea, junto a las relaciones y la mock data de las tablas. 
+Pero al intentar insertar un estudiante da error de ID repetido. Entendemos que es un error en la implementacion hibernate de JPA ya que el codigo deberia ser el mismo. A pesar de esto, consideramos que el patron factory method esta bien implementado.
 
 ### Diagrama entidad - relacion
 ![image](https://github.com/ezequielcinalli/tpe-arquitecturas-web/blob/main/docs/EntityRelationshipDiagram_Integrador2.png)
