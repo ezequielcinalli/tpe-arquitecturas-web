@@ -2,6 +2,7 @@
 import java.sql.Date;
 import java.util.List;
 
+import Dtos.CareerReportDto;
 import Dtos.CareerWithInscriptionsDto;
 import Dtos.StudentDto;
 import Factories.Factory;
@@ -29,7 +30,7 @@ public class Main {
 		factory.getEntityManager().getTransaction().begin();	
 		
 		serviceA();
-		serviceB();
+		//serviceB();
 		serviceC();
 		serviceD();
 		serviceE();
@@ -98,7 +99,8 @@ public class Main {
 		System.out.println("-------------- Generar un reporte de las carreras, que para cada carrera incluya información de los\n"
 				+ "inscriptos y egresados por año. Se deben ordenar las carreras alfabéticamente, y presentar\n"
 				+ "los años de manera cronológica.--------------") ;
-		System.out.println(studentCareerRepository.careersInformationInscriptionsAndGraduates());
+		List<CareerReportDto> list = studentCareerRepository.careersInformationInscriptionsAndGraduates() ;
+		list.forEach(x -> System.out.println(x));
 	}
 
 }

@@ -66,11 +66,10 @@ public class StudentCareerRepository implements IStudentCareerRepository {
 			    """)
 			.getResultList();
 		
-		List<Career> careers = entityManager.createQuery("SELECT c FROM Career c", Career.class).getResultList();
+		List<Career> careers = entityManager.createQuery("SELECT c FROM Career c order by c.name", Career.class).getResultList();
 		
-		for(int yearBigInt: years) {
+		for(int year: years) {
 			for (Career career : careers) {
-				int year = yearBigInt;
 				CareerReportDto careerReportDto = new CareerReportDto(career.getName(), year);
 				
 				TypedQuery<String> enrolledStudentsQuery = entityManager.createQuery("""
