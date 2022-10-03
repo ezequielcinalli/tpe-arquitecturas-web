@@ -9,14 +9,12 @@ Alternan en el main el parametro el metodo `initialize()`entre `Factory.MYSQL` y
 - Aunque de un error en consola la primera vez, esperar que termine de correr
 el servicio3 en casi todas las máquinas funciona perfecto, excepto en una donde retorna BigInt en vez de Integer y causa un error en tiempo de ejecución
 
-### Instrucciones para ejecutar Derby
-
-### Aclaracion
-
 Las credenciales para MySql son:
 Usuario: root
 Password: (vacio)
 Puerto: 3306
+
+### Instrucciones para ejecutar Derby
 
 ### Diagrama entidad - relacion
 ![image](https://github.com/ezequielcinalli/tpe-arquitecturas-web/blob/main/docs/EntityRelationshipDiagram_Integrador2.png)
