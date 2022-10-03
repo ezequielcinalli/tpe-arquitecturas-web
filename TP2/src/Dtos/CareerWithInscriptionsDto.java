@@ -4,7 +4,6 @@ public class CareerWithInscriptionsDto {
 
 	private String nameCareer;
 	private long quantityInscriptions;
-	
 
 	public CareerWithInscriptionsDto(String nameCareer, long quantityInscriptions) {
 		super();

@@ -52,9 +52,7 @@ public class StudentCareerRepository implements IStudentCareerRepository {
 	}
 
 	public List<CareerReportDto> careersInformationInscriptionsAndGraduates(){
-		
 		List<CareerReportDto> list = entityManager.createQuery("SELECT new Dtos.CareerReportDto(c.career.name, year(c.signUpDate)) FROM StudentCareer c", CareerReportDto.class).getResultList();
 		return list;
-		
 	}
 }
