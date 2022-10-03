@@ -3,11 +3,8 @@ package Repositories;
 import java.util.List;
 import javax.persistence.EntityManager;
 
-import Dtos.CareerReportDto;
 import Interfaces.ICareerRepository;
 import Models.Career;
-import Models.StudentCareer;
-import com.sun.xml.fastinfoset.util.ValueArray;
 
 public class CareerRepository implements ICareerRepository {
 

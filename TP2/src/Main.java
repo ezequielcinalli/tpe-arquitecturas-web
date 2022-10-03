@@ -27,7 +27,7 @@ public class Main {
 	public static void main(String[] args) {
 		initialize(Factory.MYSQL);
 		//initialize(Factory.DERBY);
-		factory.getEntityManager().getTransaction().begin();	
+		factory.getEntityManager().getTransaction().begin();
 		
 		serviceA();
 		serviceB();
@@ -50,6 +50,7 @@ public class Main {
 		studentCareerRepository = factory.getStudentCareerRepository();
 	}
 	
+	@SuppressWarnings("deprecation")
 	public static void serviceA(){
 		System.out.println("--------------Dar de alta un estudiante--------------") ;
 		City cityNewStudent = cityRepository.getAll().get(0);
@@ -58,6 +59,7 @@ public class Main {
 		System.out.println("Estudiante agregado con exito!");
 	}
 	
+	@SuppressWarnings("deprecation")
 	public static void serviceB(){
 		System.out.println("--------------Matricular un estudiante en una carrera--------------") ;
 		Student studentService2 = studentRepository.getAll().get(0);
