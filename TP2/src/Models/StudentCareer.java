@@ -13,7 +13,7 @@ import javax.persistence.MapsId;
 public class StudentCareer{
 	
 	@EmbeddedId
-    private StudentCareerId key;
+    private StudentCareerId key = new StudentCareerId();
 	
 	@MapsId("studentId")
     @ManyToOne

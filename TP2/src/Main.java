@@ -30,7 +30,7 @@ public class Main {
 		factory.getEntityManager().getTransaction().begin();	
 		
 		serviceA();
-		//serviceB();
+		serviceB();
 		serviceC();
 		serviceD();
 		serviceE();
