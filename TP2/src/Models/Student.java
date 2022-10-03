@@ -12,8 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import org.apache.derby.iapi.services.locks.C_LockFactory;
-
 @Entity
 public class Student{
 

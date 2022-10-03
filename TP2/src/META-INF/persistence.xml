@@ -25,7 +25,7 @@
 			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
 		    <property name="javax.persistence.schema-generation.create-source" value="metadata"/>
 		    <property name="javax.persistence.schema-generation.drop-source" value="metadata"/>
-		    <property name="javax.persistence.sql-load-script-source" value="META-INF/data.sql"/>
+		    <property name="javax.persistence.sql-load-script-source" value="META-INF/dataderby.sql"/>
 		</properties>
 	</persistence-unit>
 	
@@ -53,7 +53,7 @@
 			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
 		    <property name="javax.persistence.schema-generation.create-source" value="metadata"/>
 		    <property name="javax.persistence.schema-generation.drop-source" value="metadata"/>
-		    <property name="javax.persistence.sql-load-script-source" value="META-INF/data.sql"/>
+		    <property name="javax.persistence.sql-load-script-source" value="META-INF/datamysql.sql"/>
 		</properties>
 	</persistence-unit>
 

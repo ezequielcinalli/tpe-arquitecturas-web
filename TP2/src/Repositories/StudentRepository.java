@@ -60,7 +60,6 @@ public class StudentRepository implements IStudentRepository{
 		return query.getResultList();
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<Student> getStudentsByGenre(Genre genre) {
 		return (List<Student>) entityManager.createQuery("SELECT s FROM Student s WHERE s.genre = :gen", Student.class).setParameter("gen", genre).getResultList();
