@@ -80,7 +80,10 @@ public class Main {
 	public static void serviceE(){
 		System.out.println("--------------Recuperar todos los estudiantes, en base a su género.--------------") ;
 		Genre newGenre = Genre.Masculino;
-		System.out.println(studentRepository.getStudentsByGenre(newGenre));
+		//Genre newGenre = Genre.Femenino;
+		//Genre newGenre = Genre.NosabeNocontesta;
+		List<Student> res = studentRepository.getStudentsByGenre(newGenre) ; 
+		res.forEach(d -> System.out.println(d));
 	}
 	
 	public static void serviceF(){
