@@ -1,5 +1,7 @@
 package Repositories;
 
+import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -8,7 +10,7 @@ import javax.persistence.TypedQuery;
 import Dtos.CareerReportDto;
 import Dtos.CareerWithInscriptionsDto;
 import Interfaces.IStudentCareerRepository;
-import Models.Student;
+import Models.Career;
 import Models.StudentCareer;
 
 public class StudentCareerRepository implements IStudentCareerRepository {
@@ -52,7 +54,55 @@ public class StudentCareerRepository implements IStudentCareerRepository {
 	}
 
 	public List<CareerReportDto> careersInformationInscriptionsAndGraduates(){
-		List<CareerReportDto> list = entityManager.createQuery("SELECT new Dtos.CareerReportDto(c.career.name, year(c.signUpDate)) FROM StudentCareer c", CareerReportDto.class).getResultList();
-		return list;
+		
+		List<CareerReportDto> careerReportDtos = new ArrayList<CareerReportDto>();
+		
+		@SuppressWarnings("unchecked")
+		List<BigInteger> years = entityManager.createNativeQuery("""
+			    SELECT DISTINCT YEAR(signUpDate) as yearOutput FROM StudentCareer
+				UNION
+				SELECT DISTINCT YEAR(graduationDate) as yearOutput FROM StudentCareer WHERE graduationDate is not null
+				ORDER BY yearOutput
+			    """)
+			.getResultList();
+		
+		List<Career> careers = entityManager.createQuery("SELECT c FROM Career c", Career.class).getResultList();
+		
+		for(BigInteger yearBigInt: years) {
+			for (Career career : careers) {
+				int year = yearBigInt.intValue();
+				CareerReportDto careerReportDto = new CareerReportDto(career.getName(), year);
+				
+				TypedQuery<String> enrolledStudentsQuery = entityManager.createQuery("""
+						SELECT CONCAT(s.name, ' ', s.surname) 
+						FROM Student s
+						JOIN StudentCareer sc ON s.id = sc.key.studentId 
+						WHERE sc.key.careerId = :careerId AND YEAR(sc.signUpDate) = :year
+					""", String.class);
+				enrolledStudentsQuery.setParameter("careerId", career.getId());
+				enrolledStudentsQuery.setParameter("year", year);
+				List<String> enrolledStudents = enrolledStudentsQuery.getResultList();
+				
+				TypedQuery<String> graduatedStudentsQuery = entityManager.createQuery("""
+						SELECT CONCAT(s.name, ' ', s.surname) 
+						FROM Student s
+						JOIN StudentCareer sc ON s.id = sc.key.studentId 
+						WHERE sc.key.careerId = :careerId AND YEAR(sc.graduationDate) = :year
+					""", String.class);
+				graduatedStudentsQuery.setParameter("careerId", career.getId());
+				graduatedStudentsQuery.setParameter("year", year);
+				List<String> graduatedStudents = graduatedStudentsQuery.getResultList();
+				
+				if(enrolledStudents.isEmpty() && graduatedStudents.isEmpty())
+					continue;
+				
+				careerReportDto.setEnrolled(enrolledStudents);
+				careerReportDto.setGraduated(graduatedStudents);
+				
+				careerReportDtos.add(careerReportDto);
+			}
+		}
+		
+		return careerReportDtos;
 	}
 }
