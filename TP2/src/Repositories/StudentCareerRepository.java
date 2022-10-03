@@ -58,7 +58,7 @@ public class StudentCareerRepository implements IStudentCareerRepository {
 		List<CareerReportDto> careerReportDtos = new ArrayList<CareerReportDto>();
 		
 		@SuppressWarnings("unchecked")
-		List<BigInteger> years = entityManager.createNativeQuery("""
+		List<Integer> years = entityManager.createNativeQuery("""
 			    SELECT DISTINCT YEAR(signUpDate) as yearOutput FROM StudentCareer
 				UNION
 				SELECT DISTINCT YEAR(graduationDate) as yearOutput FROM StudentCareer WHERE graduationDate is not null
@@ -68,9 +68,9 @@ public class StudentCareerRepository implements IStudentCareerRepository {
 		
 		List<Career> careers = entityManager.createQuery("SELECT c FROM Career c", Career.class).getResultList();
 		
-		for(BigInteger yearBigInt: years) {
+		for(int yearBigInt: years) {
 			for (Career career : careers) {
-				int year = yearBigInt.intValue();
+				int year = yearBigInt;
 				CareerReportDto careerReportDto = new CareerReportDto(career.getName(), year);
 				
 				TypedQuery<String> enrolledStudentsQuery = entityManager.createQuery("""
