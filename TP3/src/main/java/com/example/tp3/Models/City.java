@@ -8,6 +8,7 @@ import javax.persistence.Id;
 
 @Entity
 public class City{
+	
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
