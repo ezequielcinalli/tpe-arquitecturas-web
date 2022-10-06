@@ -43,7 +43,7 @@ public class CityController {
     }
     
     @DeleteMapping("/{ID}")
-    public void update(@PathVariable Integer ID){
+    public void delete(@PathVariable Integer ID){
         service.deleteById(ID);
     }
 }
