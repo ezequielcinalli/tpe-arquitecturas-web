@@ -1,5 +1,6 @@
 package com.example.tp3.Services;
 
+import com.example.tp3.Dtos.CareerReportDto;
 import com.example.tp3.Dtos.CareerWithInscriptionsDto;
 import com.example.tp3.Dtos.StudentCareerAddDto;
 import com.example.tp3.Dtos.StudentCareerUpdateDto;
@@ -9,6 +10,8 @@ import com.example.tp3.Models.StudentCareer;
 import com.example.tp3.Repositories.StudentCareerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -60,5 +63,9 @@ public class StudentCareerService {
 
     public Iterable<CareerWithInscriptionsDto> careersSortedByStudents() {
         return repository.careersSortedByStudents();
+    }
+    
+    public Iterable<CareerReportDto> careersInformationInscriptionsAndGraduates() {
+        return repository.careersInformationInscriptionsAndGraduates();
     }
 }

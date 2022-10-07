@@ -1,5 +1,6 @@
 package com.example.tp3.Repositories;
 
+import com.example.tp3.Dtos.CareerReportDto;
 import com.example.tp3.Dtos.CareerWithInscriptionsDto;
 import com.example.tp3.Models.StudentCareer;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,4 +15,8 @@ public interface StudentCareerRepository extends JpaRepository<StudentCareer, In
     //@Query("SELECT new Dtos.CareerWithInscriptionsDto(c.name,COUNT(sc.student)) FROM StudentCareer sc JOIN sc.career c GROUP BY sc.career.id ORDER BY count(sc.student.id)")
     @Query("SELECT c.name,COUNT(sc.student) FROM StudentCareer sc JOIN sc.career c GROUP BY sc.career.id ORDER BY count(sc.student.id)")
     public List<CareerWithInscriptionsDto> careersSortedByStudents();
+    
+    
+    @Query("")
+    public List<CareerReportDto> careersInformationInscriptionsAndGraduates(); 
 }

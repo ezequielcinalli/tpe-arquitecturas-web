@@ -1,5 +1,6 @@
 package com.example.tp3.Controllers;
 
+import com.example.tp3.Dtos.CareerReportDto;
 import com.example.tp3.Dtos.CareerWithInscriptionsDto;
 import com.example.tp3.Dtos.StudentCareerAddDto;
 import com.example.tp3.Dtos.StudentCareerUpdateDto;
@@ -49,5 +50,10 @@ public class StudentCareerController {
     @GetMapping("/service2f")
     public Iterable<CareerWithInscriptionsDto> careersSortedByStudents() {
         return service.careersSortedByStudents();
+    }
+    
+    @GetMapping("/service2h")
+    public Iterable<CareerReportDto> careersInformationInscriptionsAndGraduates() {
+        return service.careersInformationInscriptionsAndGraduates();
     }
 }
