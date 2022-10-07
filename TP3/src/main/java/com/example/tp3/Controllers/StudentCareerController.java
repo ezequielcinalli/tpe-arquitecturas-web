@@ -1,6 +1,7 @@
 package com.example.tp3.Controllers;
 
 import com.example.tp3.Dtos.StudentCareerAddDto;
+import com.example.tp3.Dtos.StudentCareerUpdateDto;
 import com.example.tp3.Models.StudentCareer;
 import com.example.tp3.Services.StudentCareerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,18 +31,13 @@ public class StudentCareerController {
     }
 
     @PostMapping("/")
-    public StudentCareer save(@RequestBody StudentCareer studentCareer){
+    public StudentCareer save(@RequestBody StudentCareerAddDto studentCareer){
         return service.save(studentCareer);
     }
 
     @PutMapping("/{ID}")
-    public Optional<StudentCareer> update(@RequestBody StudentCareerAddDto studentCareer, @PathVariable Integer ID){
-        return service.findById(ID)
-                .map(oldStudentCareer -> {
-//                    oldStudentCareer.setGraduationDate(studentCareer.getGraduationDate());
-//                    oldStudentCareer.setSignUpDate(studentCareer.getSignUpDate());
-                    return service.save(oldStudentCareer);
-                });
+    public StudentCareer update(@RequestBody StudentCareerUpdateDto studentCareer, @PathVariable Integer ID){
+        return service.update(studentCareer, ID);
     }
 
     @DeleteMapping("/{ID}")
