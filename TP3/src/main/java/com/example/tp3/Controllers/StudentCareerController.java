@@ -1,5 +1,6 @@
 package com.example.tp3.Controllers;
 
+import com.example.tp3.Dtos.CareerWithInscriptionsDto;
 import com.example.tp3.Dtos.StudentCareerAddDto;
 import com.example.tp3.Dtos.StudentCareerUpdateDto;
 import com.example.tp3.Models.StudentCareer;
@@ -43,5 +44,10 @@ public class StudentCareerController {
     @DeleteMapping("/{ID}")
     public void delete(@PathVariable Integer ID){
         service.deleteById(ID);
+    }
+
+    @GetMapping("/service2f")
+    public Iterable<CareerWithInscriptionsDto> careersSortedByStudents() {
+        return service.careersSortedByStudents();
     }
 }
