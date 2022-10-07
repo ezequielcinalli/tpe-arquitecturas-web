@@ -1,5 +1,7 @@
 package com.example.tp3.Services;
 
+import com.example.tp3.Dtos.CityAddDto;
+import com.example.tp3.Dtos.CityUpdateDto;
 import com.example.tp3.Models.City;
 import com.example.tp3.Repositories.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +27,14 @@ public class CityService {
         return repository.findById(id);
     }
     
-    public City save(City city){
-        return repository.save(city);
+    public City save(CityAddDto city){
+        return repository.save(new City(city.name));
     }
     
-    public City update(City city){
-        return repository.save(city);
+    public City update(CityUpdateDto city, Integer ID){
+        City oldCity = findById(ID).get();
+        oldCity.setName(city.name);
+        return repository.save(oldCity);
     }
     
     public void deleteById(Integer id){

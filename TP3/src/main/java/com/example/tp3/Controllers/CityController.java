@@ -1,5 +1,7 @@
 package com.example.tp3.Controllers;
 
+import com.example.tp3.Dtos.CityAddDto;
+import com.example.tp3.Dtos.CityUpdateDto;
 import com.example.tp3.Models.City;
 import com.example.tp3.Services.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,17 +31,13 @@ public class CityController {
     }
     
     @PostMapping("/")
-    public City save(@RequestBody City city){
+    public City save(@RequestBody CityAddDto city){
         return service.save(city);
     }
     
     @PutMapping("/{ID}")
-    public Optional<City> update(@RequestBody City city, @PathVariable Integer ID){
-        return service.findById(ID)
-                .map(oldCity -> {
-                    oldCity.setName(city.getName());
-                    return service.save(oldCity);
-                });
+    public City update(@RequestBody CityUpdateDto city, @PathVariable Integer ID){
+        return service.update(city,ID);
     }
     
     @DeleteMapping("/{ID}")
