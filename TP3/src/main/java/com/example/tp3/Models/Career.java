@@ -31,7 +31,11 @@ public class Career{
 		this.inscriptions = inscriptions;
 		this.name = name;
 	}
-
+	
+	public Career(String name) {
+		super();
+		this.name = name;
+	}
 	public List<StudentCareer> getInscriptions() {
 		return inscriptions;
 	}
@@ -51,5 +55,12 @@ public class Career{
 	public int getId() {
 		return id;
 	}
+
+	@Override
+	public String toString() {
+		return "Career [name=" + name + "]";
+	}
+	
+	
     
 }

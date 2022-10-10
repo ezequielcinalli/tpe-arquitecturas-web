@@ -1,5 +1,7 @@
 package com.example.tp3.Controllers;
 
+import com.example.tp3.Dtos.CareerAddDto;
+import com.example.tp3.Dtos.CareerUpdateDto;
 import com.example.tp3.Models.Career;
 import com.example.tp3.Services.CareerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,21 +31,17 @@ public class CareerController {
     }
     
     @PostMapping("/")
-    public Career save(@RequestBody Career Career){
-        return service.save(Career);
+    public Career save(@RequestBody CareerAddDto career){
+        return service.save(career);
     }
     
     @PutMapping("/{ID}")
-    public Optional<Career> update(@RequestBody Career Career, @PathVariable Integer ID){
-        return service.findById(ID)
-                .map(oldCareer -> {
-                    oldCareer.setName(Career.getName());
-                    return service.save(oldCareer);
-                });
+    public Career update(@RequestBody CareerUpdateDto career, @PathVariable Integer ID){
+    	return service.update(career, ID);                
     }
     
     @DeleteMapping("/{ID}")
-    public void update(@PathVariable Integer ID){
+    public void delete(@PathVariable Integer ID){
         service.deleteById(ID);
     }
 }
