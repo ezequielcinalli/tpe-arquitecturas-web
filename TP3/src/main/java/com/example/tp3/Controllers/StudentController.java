@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.tp3.Dtos.StudentAddDto;
 import com.example.tp3.Models.Student;
 import com.example.tp3.Services.StudentService;
 
@@ -27,7 +28,7 @@ public class StudentController {
     }
     
     @GetMapping("/")
-    public Iterable<Student> getCities(){
+    public Iterable<Student> getAll(){
         return service.findAll();
     }
     
@@ -37,8 +38,8 @@ public class StudentController {
     }
     
     @PostMapping("/")
-    public Student save(@RequestBody Student student){
-        return service.save(student);
+    public Student save(@RequestBody StudentAddDto dto){
+        return service.save(dto);
     }
     
     @PutMapping("/{ID}")
@@ -46,7 +47,7 @@ public class StudentController {
         return service.findById(ID)
                 .map(oldStudent -> {
                     oldStudent.setName(student.getName());
-                    return service.save(oldStudent);
+                    return service.update(oldStudent);
                 });
     }
     

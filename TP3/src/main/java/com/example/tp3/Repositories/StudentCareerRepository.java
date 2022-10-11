@@ -17,6 +17,6 @@ public interface StudentCareerRepository extends JpaRepository<StudentCareer, In
     public List<CareerWithInscriptionsDto> careersSortedByStudents();
     
     
-    @Query("")
-    public List<CareerReportDto> careersInformationInscriptionsAndGraduates(); 
+    //@Query("") TODO commented because it gives error since the query is not written and can't run the application to continue with other tasks
+    //public List<CareerReportDto> careersInformationInscriptionsAndGraduates(); 
 }

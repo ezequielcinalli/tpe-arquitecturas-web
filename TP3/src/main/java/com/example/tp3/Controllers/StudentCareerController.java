@@ -51,9 +51,9 @@ public class StudentCareerController {
     public Iterable<CareerWithInscriptionsDto> careersSortedByStudents() {
         return service.careersSortedByStudents();
     }
-    
+    /*
     @GetMapping("/service2h")
     public Iterable<CareerReportDto> careersInformationInscriptionsAndGraduates() {
         return service.careersInformationInscriptionsAndGraduates();
-    }
+    }*/
 }

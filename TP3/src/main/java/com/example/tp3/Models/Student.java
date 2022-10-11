@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Student{
 
@@ -36,6 +38,7 @@ public class Student{
 
     @ManyToOne
     @JoinColumn(name="cityId",referencedColumnName="id",nullable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private City city;
 
     @OneToMany(mappedBy = "student")

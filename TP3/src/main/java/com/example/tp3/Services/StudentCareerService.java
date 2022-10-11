@@ -64,8 +64,8 @@ public class StudentCareerService {
     public Iterable<CareerWithInscriptionsDto> careersSortedByStudents() {
         return repository.careersSortedByStudents();
     }
-    
+    /*
     public Iterable<CareerReportDto> careersInformationInscriptionsAndGraduates() {
         return repository.careersInformationInscriptionsAndGraduates();
-    }
+    }*/
 }
