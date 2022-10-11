@@ -4,7 +4,7 @@ import java.sql.Date;
 
 import com.example.tp3.Models.Genre;
 
-public class StudentAddDto {
+public class StudentAddOrUpdateDto {
 
 	public String name;
 	public String surname;

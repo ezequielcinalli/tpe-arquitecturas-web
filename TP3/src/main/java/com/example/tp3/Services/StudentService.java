@@ -5,9 +5,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.tp3.Dtos.StudentAddDto;
+import com.example.tp3.Dtos.StudentAddOrUpdateDto;
 import com.example.tp3.Models.City;
 import com.example.tp3.Models.Student;
+import com.example.tp3.Models.StudentCareer;
 import com.example.tp3.Repositories.CityRepository;
 import com.example.tp3.Repositories.StudentRepository;
 
@@ -32,13 +33,24 @@ public class StudentService {
         return repository.findById(id);
     }
     
-    public Student save(StudentAddDto dto){
+    public Student save(StudentAddOrUpdateDto dto){
     	City city = cityRepository.getReferenceById(dto.cityId);
     	Student student = new Student(dto.name, dto.surname, dto.birthdate, dto.genre, dto.dni, city);
         return repository.save(student);
     }
     
-    public Student update(Student student){
+    public Student update(StudentAddOrUpdateDto dto, int id) {
+    	
+    	Student student = findById(id).get();
+        City city = cityRepository.findById(dto.cityId).get();
+        
+        student.setName(dto.name);
+        student.setSurname(dto.surname);
+        student.setBirthdate(dto.birthdate);
+        student.setGenre(dto.genre);
+        student.setDni(dto.dni);
+        student.setcity(city);
+        
         return repository.save(student);
     }
     

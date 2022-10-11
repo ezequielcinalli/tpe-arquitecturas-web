@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.tp3.Dtos.StudentAddDto;
+import com.example.tp3.Dtos.StudentAddOrUpdateDto;
 import com.example.tp3.Models.Student;
 import com.example.tp3.Services.StudentService;
 
@@ -32,28 +32,24 @@ public class StudentController {
         return service.findAll();
     }
     
-    @GetMapping("/{ID}")
-    public Optional<Student> getStudentByID(@PathVariable Integer ID){
-        return service.findById(ID);
+    @GetMapping("/{id}")
+    public Optional<Student> getStudentByID(@PathVariable Integer id){
+        return service.findById(id);
     }
     
     @PostMapping("/")
-    public Student save(@RequestBody StudentAddDto dto){
+    public Student save(@RequestBody StudentAddOrUpdateDto dto){
         return service.save(dto);
     }
     
-    @PutMapping("/{ID}")
-    public Optional<Student> update(@RequestBody Student student, @PathVariable Integer ID){
-        return service.findById(ID)
-                .map(oldStudent -> {
-                    oldStudent.setName(student.getName());
-                    return service.update(oldStudent);
-                });
+    @PutMapping("/{id}")
+    public Student update(@RequestBody StudentAddOrUpdateDto dto, @PathVariable Integer id){
+        return service.update(dto, id);
     }
     
-    @DeleteMapping("/{ID}")
-    public void delete(@PathVariable Integer ID){
-        service.deleteById(ID);
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Integer id){
+        service.deleteById(id);
     }
 
 }
