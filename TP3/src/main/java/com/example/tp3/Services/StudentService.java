@@ -41,8 +41,8 @@ public class StudentService {
     
     public Student update(StudentAddOrUpdateDto dto, int id) {
     	
-    	Student student = findById(id).get();
-        City city = cityRepository.findById(dto.cityId).get();
+    	Student student = repository.getReferenceById(id);
+        City city = cityRepository.getReferenceById(dto.cityId);
         
         student.setName(dto.name);
         student.setSurname(dto.surname);
