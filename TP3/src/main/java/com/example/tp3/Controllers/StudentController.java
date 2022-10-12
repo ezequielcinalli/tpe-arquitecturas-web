@@ -52,4 +52,9 @@ public class StudentController {
         service.deleteById(id);
     }
 
+    @GetMapping("/service2c")
+    public Iterable<Student> studentSortedByName() {
+        return service.studentSortedByName();
+    }
+
 }

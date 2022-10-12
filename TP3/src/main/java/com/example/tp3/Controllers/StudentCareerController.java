@@ -2,6 +2,7 @@ package com.example.tp3.Controllers;
 
 import com.example.tp3.Dtos.CareerReportDto;
 import com.example.tp3.Dtos.CareerWithInscriptionsDto;
+import com.example.tp3.Dtos.StudentByCityDto;
 import com.example.tp3.Dtos.StudentCareerAddDto;
 import com.example.tp3.Dtos.StudentCareerUpdateDto;
 import com.example.tp3.Models.StudentCareer;
@@ -50,6 +51,11 @@ public class StudentCareerController {
     @GetMapping("/service2f")
     public Iterable<CareerWithInscriptionsDto> careersSortedByStudents() {
         return service.careersSortedByStudents();
+    }
+
+    @GetMapping("/service2g")
+    public Iterable<StudentByCityDto> studentsByCareerFilteredCyCity(@PathVariable int cityId, @PathVariable  int careerId) {
+        return service.studentsByCareerFilteredCyCity(cityId,careerId);
     }
     /*
     @GetMapping("/service2h")

@@ -57,4 +57,8 @@ public class StudentService {
     public void deleteById(Integer id){
         repository.deleteById(id);
     }
+
+    public Iterable<Student> studentSortedByName() {
+        return repository.studentSortedByName();
+    }
 }

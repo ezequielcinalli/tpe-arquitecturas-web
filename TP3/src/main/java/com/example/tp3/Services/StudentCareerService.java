@@ -2,6 +2,7 @@ package com.example.tp3.Services;
 
 import com.example.tp3.Dtos.CareerReportDto;
 import com.example.tp3.Dtos.CareerWithInscriptionsDto;
+import com.example.tp3.Dtos.StudentByCityDto;
 import com.example.tp3.Dtos.StudentCareerAddDto;
 import com.example.tp3.Dtos.StudentCareerUpdateDto;
 import com.example.tp3.Models.Career;
@@ -63,6 +64,10 @@ public class StudentCareerService {
 
     public Iterable<CareerWithInscriptionsDto> careersSortedByStudents() {
         return repository.careersSortedByStudents();
+    }
+
+    public Iterable<StudentByCityDto> studentsByCareerFilteredCyCity(int cityId,int careerId) {
+        return repository.studentsByCareerFilteredCyCity(cityId,careerId);
     }
     /*
     public Iterable<CareerReportDto> careersInformationInscriptionsAndGraduates() {

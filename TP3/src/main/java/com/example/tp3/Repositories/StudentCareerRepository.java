@@ -2,6 +2,8 @@ package com.example.tp3.Repositories;
 
 import com.example.tp3.Dtos.CareerReportDto;
 import com.example.tp3.Dtos.CareerWithInscriptionsDto;
+import com.example.tp3.Dtos.StudentByCityDto;
+import com.example.tp3.Models.City;
 import com.example.tp3.Models.StudentCareer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -16,6 +18,8 @@ public interface StudentCareerRepository extends JpaRepository<StudentCareer, In
     @Query("SELECT c.name,COUNT(sc.student) FROM StudentCareer sc JOIN sc.career c GROUP BY sc.career.id ORDER BY count(sc.student.id)")
     public List<CareerWithInscriptionsDto> careersSortedByStudents();
     
+    @Query("SELECT new Dtos.StudentDto(CONCAT(s.name, ' ', s.surname)) FROM Student s JOIN StudentCareer sc ON s.id = sc.key.studentId WHERE sc.key.careerId = :careerId AND s.city.id = :cityId")
+    public List<StudentByCityDto> studentsByCareerFilteredCyCity(int cityId, int careerId );
     
     //@Query("") TODO commented because it gives error since the query is not written and can't run the application to continue with other tasks
     //public List<CareerReportDto> careersInformationInscriptionsAndGraduates(); 
