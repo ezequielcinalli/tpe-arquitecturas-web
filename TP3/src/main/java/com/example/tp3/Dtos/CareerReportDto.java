@@ -33,5 +33,13 @@ public class CareerReportDto {
 	public List<String> getGraduated() {
 		return graduated;
 	}
-    
+
+
+	public void setEnrolled(List<String> enrolled) {
+		this.enrolled = enrolled;
+	}
+
+	public void setGraduated(List<String> graduated) {
+		this.graduated = graduated;
+	}
 }
