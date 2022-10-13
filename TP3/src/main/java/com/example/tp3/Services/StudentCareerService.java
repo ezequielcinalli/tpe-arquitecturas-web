@@ -9,7 +9,6 @@ import com.example.tp3.Repositories.StudentCareerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.TypedQuery;
 import java.util.*;
 
 @Service
@@ -71,8 +70,9 @@ public class StudentCareerService {
 
         List<CareerReportDto> careerReportDtos = new ArrayList<CareerReportDto>();
 
-        List<Integer> years = repository.getInscriptionYears();
-        years.addAll(repository.getGraduationYears());
+        HashSet<Integer> yearsSet = repository.getInscriptionYears();
+        yearsSet.addAll(repository.getGraduationYears());
+        List<Integer> years = new ArrayList<Integer>(yearsSet);
         Collections.sort(years);
 
         Iterable<Career> careers =  careerService.findAllOrderedByName();

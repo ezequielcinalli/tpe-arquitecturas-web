@@ -81,6 +81,7 @@ class LoadDatabase {
 			var studentCareer8 = new StudentCareer(student8, career8, new Date(obj.parse("2017-7-7").getTime()), new Date(obj.parse("2015-1-1").getTime()));
 			var studentCareer9 = new StudentCareer(student9, career9, new Date(obj.parse("2012-2-2").getTime()), new Date(obj.parse("2014-1-1").getTime()));
 			var studentCareer10 = new StudentCareer(student10, career10, new Date(obj.parse("2015-1-1").getTime()), new Date(obj.parse("2013-3-3").getTime()));
+			var studentCareer11 = new StudentCareer(student1, career2, new Date(obj.parse("2015-1-1").getTime()), new Date(obj.parse("2016-1-1").getTime()));
 			log.info("Preloading " + studentCareerRepository.save(studentCareer1));
 			log.info("Preloading " + studentCareerRepository.save(studentCareer2));
 			log.info("Preloading " + studentCareerRepository.save(studentCareer3));
@@ -91,6 +92,7 @@ class LoadDatabase {
 			log.info("Preloading " + studentCareerRepository.save(studentCareer8));
 			log.info("Preloading " + studentCareerRepository.save(studentCareer9));
 			log.info("Preloading " + studentCareerRepository.save(studentCareer10));
+			log.info("Preloading " + studentCareerRepository.save(studentCareer11));
         };
     }
 }

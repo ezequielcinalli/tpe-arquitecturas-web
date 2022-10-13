@@ -22,9 +22,9 @@ public class CareerService {
     public Iterable<Career> findAll(){
         return repository.findAll();
     }
+    
     public Iterable<Career> findAllOrderedByName(){
-        //TODO return ordered
-        return repository.findAll();
+        return repository.careersSorteredByName();
     }
     
     public Optional<Career> findById(Integer id){
