@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("student-career")
+@RequestMapping("student-careers")
 public class StudentCareerController {
 
     @Autowired
@@ -28,9 +28,9 @@ public class StudentCareerController {
         return service.findAll();
     }
 
-    @GetMapping("/{ID}")
-    public Optional<StudentCareer> getStudentCareerByID(@PathVariable Integer ID){
-        return service.findById(ID);
+    @GetMapping("/{studentId}/{careerId}")
+    public Optional<StudentCareer> getStudentCareerByID(@PathVariable Integer studentId, @PathVariable Integer careerId){
+        return service.findById(studentId, careerId);
     }
 
     @PostMapping("/")
@@ -38,14 +38,14 @@ public class StudentCareerController {
         return service.save(studentCareer);
     }
 
-    @PutMapping("/{ID}")
-    public StudentCareer update(@RequestBody StudentCareerUpdateDto studentCareer, @PathVariable Integer ID){
-        return service.update(studentCareer, ID);
+    @PutMapping("/{studentId}/{careerId}")
+    public StudentCareer update(@RequestBody StudentCareerUpdateDto studentCareer, @PathVariable Integer studentId,@PathVariable Integer careerId){
+        return service.update(studentCareer, studentId, careerId);
     }
 
-    @DeleteMapping("/{ID}")
-    public void delete(@PathVariable Integer ID){
-        service.deleteById(ID);
+    @DeleteMapping("/{studentId}/{careerId}")
+    public void delete(@PathVariable Integer studentId, Integer careerId){
+        service.deleteById(studentId, careerId);
     }
 
     @GetMapping("/service2f")
