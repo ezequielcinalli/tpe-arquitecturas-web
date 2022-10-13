@@ -1,6 +1,5 @@
 package com.example.tp3.Controllers;
 
-import com.example.tp3.Dtos.CareerReportDto;
 import com.example.tp3.Dtos.CareerWithInscriptionsDto;
 import com.example.tp3.Dtos.StudentByCityDto;
 import com.example.tp3.Dtos.StudentCareerAddDto;

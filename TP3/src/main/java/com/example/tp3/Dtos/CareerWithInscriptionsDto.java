@@ -1,12 +1,22 @@
 package com.example.tp3.Dtos;
 
 public class CareerWithInscriptionsDto {
-    private String nameCareer;
-    private long quantityInscriptions;
+	
+    private String name;
+    private long inscriptions;
 
-    public CareerWithInscriptionsDto(String nameCareer, long quantityInscriptions) {
+    public CareerWithInscriptionsDto(String name, long inscriptions) {
         super();
-        this.nameCareer = nameCareer;
-        this.quantityInscriptions = quantityInscriptions;
+        this.name = name;
+        this.inscriptions = inscriptions;
     }
+
+	public String getNameCareer() {
+		return name;
+	}
+
+	public long getQuantityInscriptions() {
+		return inscriptions;
+	}
+    
 }

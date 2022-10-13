@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.example.tp3.Dtos.StudentAddOrUpdateDto;
 import com.example.tp3.Models.City;
 import com.example.tp3.Models.Student;
-import com.example.tp3.Models.StudentCareer;
 import com.example.tp3.Repositories.CityRepository;
 import com.example.tp3.Repositories.StudentRepository;
 
