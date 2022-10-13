@@ -1,9 +1,6 @@
 package com.example.tp3.Services;
 
-import com.example.tp3.Dtos.CareerWithInscriptionsDto;
-import com.example.tp3.Dtos.StudentByCityDto;
-import com.example.tp3.Dtos.StudentCareerAddDto;
-import com.example.tp3.Dtos.StudentCareerUpdateDto;
+import com.example.tp3.Dtos.*;
 import com.example.tp3.Models.Career;
 import com.example.tp3.Models.Student;
 import com.example.tp3.Models.StudentCareer;
@@ -12,7 +9,8 @@ import com.example.tp3.Repositories.StudentCareerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import javax.persistence.TypedQuery;
+import java.util.*;
 
 @Service
 public class StudentCareerService {
@@ -68,8 +66,36 @@ public class StudentCareerService {
     public Iterable<StudentByCityDto> studentsByCareerFilteredCyCity(int cityId,int careerId) {
         return repository.studentsByCareerFilteredCyCity(cityId,careerId);
     }
-    /*
-    public Iterable<CareerReportDto> careersInformationInscriptionsAndGraduates() {
-        return repository.careersInformationInscriptionsAndGraduates();
-    }*/
+
+    public List<CareerReportDto> careersInformationInscriptionsAndGraduates(){
+
+        List<CareerReportDto> careerReportDtos = new ArrayList<CareerReportDto>();
+
+        List<Integer> years = repository.getInscriptionYears();
+        years.addAll(repository.getGraduationYears());
+        Collections.sort(years);
+
+        Iterable<Career> careers =  careerService.findAllOrderedByName();
+
+        for(int year: years) {
+            for (Career career : careers) {
+                CareerReportDto careerReportDto = new CareerReportDto(career.getName(), year);
+
+                List<String> enrolledStudents = repository.getEnrolledStudents(career.getId(), year);
+
+				
+                List<String> graduatedStudents = repository.getGraduatedStudents(career.getId(), year);
+
+                if(enrolledStudents.isEmpty() && graduatedStudents.isEmpty())
+                    continue;
+
+                careerReportDto.setEnrolled(enrolledStudents);
+                careerReportDto.setGraduated(graduatedStudents);
+
+                careerReportDtos.add(careerReportDto);
+            }
+        }
+
+        return careerReportDtos;
+    }
 }

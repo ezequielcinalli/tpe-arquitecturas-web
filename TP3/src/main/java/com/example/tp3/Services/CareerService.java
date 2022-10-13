@@ -22,6 +22,10 @@ public class CareerService {
     public Iterable<Career> findAll(){
         return repository.findAll();
     }
+    public Iterable<Career> findAllOrderedByName(){
+        //TODO return ordered
+        return repository.findAll();
+    }
     
     public Optional<Career> findById(Integer id){
         return repository.findById(id);

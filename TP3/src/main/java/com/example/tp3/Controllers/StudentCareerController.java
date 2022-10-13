@@ -1,9 +1,6 @@
 package com.example.tp3.Controllers;
 
-import com.example.tp3.Dtos.CareerWithInscriptionsDto;
-import com.example.tp3.Dtos.StudentByCityDto;
-import com.example.tp3.Dtos.StudentCareerAddDto;
-import com.example.tp3.Dtos.StudentCareerUpdateDto;
+import com.example.tp3.Dtos.*;
 import com.example.tp3.Models.StudentCareer;
 import com.example.tp3.Services.StudentCareerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,9 +58,9 @@ public class StudentCareerController {
     public Iterable<StudentByCityDto> studentsByCareerFilteredCyCity(@PathVariable int cityId, @PathVariable  int careerId) {
         return service.studentsByCareerFilteredCyCity(cityId,careerId);
     }
-    /*
-    @GetMapping("/service2h")
+    
+    @GetMapping("/service-h")
     public Iterable<CareerReportDto> careersInformationInscriptionsAndGraduates() {
         return service.careersInformationInscriptionsAndGraduates();
-    }*/
+    }
 }
