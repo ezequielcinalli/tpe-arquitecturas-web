@@ -36,6 +36,11 @@ public class StudentCareerController {
     public StudentCareer save(@RequestBody StudentCareerAddDto studentCareer){
         return service.save(studentCareer);
     }
+    
+    @PostMapping("/service-b")
+    public StudentCareer save_b(@RequestBody StudentCareerAddDto studentCareer){
+        return service.save(studentCareer);
+    }
 
     @PutMapping("/{studentId}/{careerId}")
     public StudentCareer update(@RequestBody StudentCareerUpdateDto studentCareer, @PathVariable Integer studentId,@PathVariable Integer careerId){

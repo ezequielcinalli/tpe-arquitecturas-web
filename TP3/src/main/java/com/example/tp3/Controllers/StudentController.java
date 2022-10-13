@@ -42,6 +42,11 @@ public class StudentController {
         return service.save(dto);
     }
     
+    @PostMapping("/service-a")
+    public Student save_a(@RequestBody StudentAddOrUpdateDto dto){
+        return service.save(dto);
+    }
+    
     @PutMapping("/{id}")
     public Student update(@RequestBody StudentAddOrUpdateDto dto, @PathVariable Integer id){
         return service.update(dto, id);
