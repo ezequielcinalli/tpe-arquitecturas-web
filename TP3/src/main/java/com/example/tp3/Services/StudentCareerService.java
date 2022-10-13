@@ -8,6 +8,7 @@ import com.example.tp3.Dtos.StudentCareerUpdateDto;
 import com.example.tp3.Models.Career;
 import com.example.tp3.Models.Student;
 import com.example.tp3.Models.StudentCareer;
+import com.example.tp3.Models.StudentCareerId;
 import com.example.tp3.Repositories.StudentCareerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,8 +35,8 @@ public class StudentCareerService {
         return repository.findAll();
     }
 
-    public Optional<StudentCareer> findById(Integer id){
-        return repository.findById(id);
+    public Optional<StudentCareer> findById(Integer studentID, Integer careerId){
+        return repository.findById(new StudentCareerId(studentID,careerId));
     }
 
     public StudentCareer save(StudentCareerAddDto studentCareerAddDto){
@@ -45,8 +46,8 @@ public class StudentCareerService {
         return repository.save(newStudentCareer);
     }
 
-    public StudentCareer update(StudentCareerUpdateDto studentCareerUpdateDto, Integer ID){
-        StudentCareer oldStudentCareer = findById(ID).get();
+    public StudentCareer update(StudentCareerUpdateDto studentCareerUpdateDto,Integer studentID, Integer careerId){
+        StudentCareer oldStudentCareer = findById(studentID,careerId).get();
         if(oldStudentCareer.student.getId() != studentCareerUpdateDto.studentId) {
             oldStudentCareer.setStudent(studentService.findById(studentCareerUpdateDto.studentId).get());
         }
@@ -58,8 +59,8 @@ public class StudentCareerService {
         return repository.save(oldStudentCareer);
     }
 
-    public void deleteById(Integer id){
-        repository.deleteById(id);
+    public void deleteById(Integer studentId, Integer careerId){
+        repository.deleteById(new StudentCareerId(studentId, careerId));
     }
 
     public Iterable<CareerWithInscriptionsDto> careersSortedByStudents() {
