@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -42,6 +43,7 @@ public class Student{
     private City city;
 
     @OneToMany(mappedBy = "student")
+    @JsonIgnore
     private List<StudentCareer> careers;
     
     public Student() {
