@@ -4,8 +4,10 @@ import com.example.tp3.Models.Career;
 import com.example.tp3.Models.City;
 import com.example.tp3.Models.Genre;
 import com.example.tp3.Models.Student;
+import com.example.tp3.Models.StudentCareer;
 import com.example.tp3.Repositories.CareerRepository;
 import com.example.tp3.Repositories.CityRepository;
+import com.example.tp3.Repositories.StudentCareerRepository;
 import com.example.tp3.Repositories.StudentRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +23,7 @@ import org.springframework.context.annotation.Configuration;
 class LoadDatabase {
 
     @Bean
-        CommandLineRunner initDatabase(CityRepository cityRepository, StudentRepository studentRepository, CareerRepository careerRepository) {
+        CommandLineRunner initDatabase(CityRepository cityRepository, StudentRepository studentRepository, CareerRepository careerRepository, StudentCareerRepository studentCareerRepository) {
         return args -> {
         	var city1 = new City("City1");
         	var city2 = new City("City2");
@@ -67,6 +69,26 @@ class LoadDatabase {
           log.info("Preloading " + careerRepository.save(career8));
           log.info("Preloading " + careerRepository.save(career9));
           log.info("Preloading " + careerRepository.save(career10));
+          var studentCareer1 = new StudentCareer(student1, career1, new Date(2015-1-1), new Date(2016-1-1));
+          var studentCareer2 = new StudentCareer(student2, career2, new Date(2013-3-3), new Date(2016-1-1));
+          var studentCareer3 = new StudentCareer(student3, career3, new Date(2014-4-4), new Date(2014-1-1));
+          var studentCareer4 = new StudentCareer(student4, career4, new Date(2012-2-2), new Date(2017-1-1));
+          var studentCareer5 = new StudentCareer(student5, career5, new Date(2009-9-9), new Date(2018-1-1));
+          var studentCareer6 = new StudentCareer(student6, career6, new Date(2016-6-6), new Date(2020-1-1));
+          var studentCareer7 = new StudentCareer(student7, career7, new Date(2016-6-6), new Date(2021-1-1));
+          var studentCareer8 = new StudentCareer(student8, career8, new Date(2017-7-7), new Date(2015-1-1));
+          var studentCareer9 = new StudentCareer(student9, career9, new Date(2012-2-2), new Date(2014-1-1));
+          var studentCareer10 = new StudentCareer(student10, career10, new Date(2015-1-1), new Date(2013-3-3));
+          log.info("Preloading " + studentCareerRepository.save(studentCareer1));
+          log.info("Preloading " + studentCareerRepository.save(studentCareer2));
+          log.info("Preloading " + studentCareerRepository.save(studentCareer3));
+          log.info("Preloading " + studentCareerRepository.save(studentCareer4));
+          log.info("Preloading " + studentCareerRepository.save(studentCareer5));
+          log.info("Preloading " + studentCareerRepository.save(studentCareer6));
+          log.info("Preloading " + studentCareerRepository.save(studentCareer7));
+          log.info("Preloading " + studentCareerRepository.save(studentCareer8));
+          log.info("Preloading " + studentCareerRepository.save(studentCareer9));
+          log.info("Preloading " + studentCareerRepository.save(studentCareer10));
         };
     }
 }
