@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.tp3.Dtos.StudentAddOrUpdateDto;
+import com.example.tp3.Dtos.StudentByCityDto;
+import com.example.tp3.Models.Genre;
 import com.example.tp3.Models.Student;
 import com.example.tp3.Services.StudentService;
 
@@ -37,16 +39,13 @@ public class StudentController {
         return service.findById(id);
     }
     
+    
     @PostMapping("/")
     public Student save(@RequestBody StudentAddOrUpdateDto dto){
         return service.save(dto);
     }
     
-    @PostMapping("/service-a")
-    public Student save_a(@RequestBody StudentAddOrUpdateDto dto){
-        return service.save(dto);
-    }
-    
+      
     @PutMapping("/{id}")
     public Student update(@RequestBody StudentAddOrUpdateDto dto, @PathVariable Integer id){
         return service.update(dto, id);
@@ -57,9 +56,23 @@ public class StudentController {
         service.deleteById(id);
     }
 
-    @GetMapping("/service2c")
+    @PostMapping("/service-a")
+    public Student save_a(@RequestBody StudentAddOrUpdateDto dto){
+        return service.save(dto);
+    }
+
+    @GetMapping("/service-c")
     public Iterable<Student> studentSortedByName() {
         return service.studentSortedByName();
+    }
+    
+    @GetMapping("/service-d/{id}")
+    public Optional<Student> service_d(@PathVariable Integer id){
+        return service.findById(id);
+    }
+    @GetMapping("/service-e/{genre}")
+    public Iterable<StudentByCityDto> studentsByGenre(@PathVariable Genre genre) {
+        return service.studentsByGenre(genre);
     }
 
 }

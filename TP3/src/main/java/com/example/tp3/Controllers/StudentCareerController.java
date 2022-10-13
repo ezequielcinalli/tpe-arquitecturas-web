@@ -53,12 +53,12 @@ public class StudentCareerController {
         service.deleteById(studentId, careerId);
     }
 
-    @GetMapping("/service2f")
+    @GetMapping("/service-f")
     public Iterable<CareerWithInscriptionsDto> careersSortedByStudents() {
         return service.careersSortedByStudents();
     }
 
-    @GetMapping("/service2g")
+    @GetMapping("/service-g/{cityId}/{careerId}")
     public Iterable<StudentByCityDto> studentsByCareerFilteredCyCity(@PathVariable int cityId, @PathVariable  int careerId) {
         return service.studentsByCareerFilteredCyCity(cityId,careerId);
     }

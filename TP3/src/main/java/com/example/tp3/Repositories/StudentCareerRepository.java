@@ -17,8 +17,9 @@ import java.util.List;
 @Repository
 public interface StudentCareerRepository extends JpaRepository<StudentCareer, StudentCareerId> {
     //TODO: ver si funciona con o sin el new dto. Con new dto() en intelliJ da error sintaxis
-    //@Query("SELECT new Dtos.CareerWithInscriptionsDto(c.name,COUNT(sc.student)) FROM StudentCareer sc JOIN sc.career c GROUP BY sc.career.id ORDER BY count(sc.student.id)")
-    @Query("SELECT c.name,COUNT(sc.student) FROM StudentCareer sc JOIN sc.career c GROUP BY sc.career.id ORDER BY count(sc.student.id)")
+    //@Query("SELECT new com.example.tp3.Dtos.CareerWithInscriptionsDto(c.name) FROM career c")
+    @Query("SELECT new com.example.tp3.Dtos.CareerWithInscriptionsDto(c.name,COUNT(sc.student.id)) FROM StudentCareer sc JOIN sc.career c GROUP BY sc.career.id ORDER BY count(sc.student.id)")
+    //@Query("SELECT c.name,COUNT(sc.student) FROM StudentCareer sc JOIN sc.career c GROUP BY sc.career.id ORDER BY count(sc.student.id)")
     public List<CareerWithInscriptionsDto> careersSortedByStudents();
     
     @Query("SELECT NEW com.example.tp3.Dtos.StudentByCityDto(s.name, s.surname) FROM Student s JOIN StudentCareer sc ON s.id = sc.key.studentId WHERE sc.key.careerId = :careerId AND s.city.id = :cityId")

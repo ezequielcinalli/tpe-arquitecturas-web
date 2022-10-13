@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.tp3.Dtos.StudentAddOrUpdateDto;
+import com.example.tp3.Dtos.StudentByCityDto;
 import com.example.tp3.Models.City;
+import com.example.tp3.Models.Genre;
 import com.example.tp3.Models.Student;
 import com.example.tp3.Models.StudentCareer;
 import com.example.tp3.Repositories.CityRepository;
@@ -60,5 +62,9 @@ public class StudentService {
 
     public Iterable<Student> studentSortedByName() {
         return repository.studentSortedByName();
+    }
+    
+    public Iterable<StudentByCityDto> studentsByGenre(Genre genre) {
+        return repository.studentsByGenre(genre);
     }
 }
