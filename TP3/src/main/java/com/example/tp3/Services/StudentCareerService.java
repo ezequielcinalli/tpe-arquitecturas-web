@@ -1,6 +1,5 @@
 package com.example.tp3.Services;
 
-import com.example.tp3.Dtos.CareerReportDto;
 import com.example.tp3.Dtos.CareerWithInscriptionsDto;
 import com.example.tp3.Dtos.StudentByCityDto;
 import com.example.tp3.Dtos.StudentCareerAddDto;
@@ -13,7 +12,6 @@ import com.example.tp3.Repositories.StudentCareerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
