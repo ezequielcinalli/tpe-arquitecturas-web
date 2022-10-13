@@ -18,7 +18,7 @@ public interface StudentCareerRepository extends JpaRepository<StudentCareer, In
     @Query("SELECT c.name,COUNT(sc.student) FROM StudentCareer sc JOIN sc.career c GROUP BY sc.career.id ORDER BY count(sc.student.id)")
     public List<CareerWithInscriptionsDto> careersSortedByStudents();
     
-    @Query("SELECT new Dtos.StudentDto(CONCAT(s.name, ' ', s.surname)) FROM Student s JOIN StudentCareer sc ON s.id = sc.key.studentId WHERE sc.key.careerId = :careerId AND s.city.id = :cityId")
+    @Query("SELECT NEW com.example.tp3.Dtos.StudentByCityDto(s.name, s.surname) FROM Student s JOIN StudentCareer sc ON s.id = sc.key.studentId WHERE sc.key.careerId = :careerId AND s.city.id = :cityId")
     public List<StudentByCityDto> studentsByCareerFilteredCyCity(int cityId, int careerId );
     
     //@Query("") TODO commented because it gives error since the query is not written and can't run the application to continue with other tasks
