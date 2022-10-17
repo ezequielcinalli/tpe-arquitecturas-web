@@ -40,12 +40,12 @@ public class StudentCareerController {
     }
 
     @PutMapping("/{studentId}/{careerId}")
-    public StudentCareer update(@RequestBody StudentCareerUpdateDto studentCareer, @PathVariable Integer studentId,@PathVariable Integer careerId){
+    public StudentCareer update(@RequestBody StudentCareerUpdateDto studentCareer, @PathVariable Integer studentId, @PathVariable Integer careerId){
         return service.update(studentCareer, studentId, careerId);
     }
 
     @DeleteMapping("/{studentId}/{careerId}")
-    public void delete(@PathVariable Integer studentId, Integer careerId){
+    public void delete(@PathVariable Integer studentId, @PathVariable Integer careerId){
         service.deleteById(studentId, careerId);
     }
 
@@ -55,7 +55,7 @@ public class StudentCareerController {
     }
 
     @GetMapping("/service-g/{cityId}/{careerId}")
-    public Iterable<StudentByCityDto> studentsByCareerFilteredCyCity(@PathVariable int cityId, @PathVariable  int careerId) {
+    public Iterable<StudentByCityDto> studentsByCareerFilteredCyCity(@PathVariable int cityId, @PathVariable int careerId) {
         return service.studentsByCareerFilteredCyCity(cityId,careerId);
     }
     
