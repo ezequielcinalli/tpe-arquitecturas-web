@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.tp3.Dtos.StudentAddOrUpdateDto;
+import com.example.tp3.Dtos.StudentAddDto;
 import com.example.tp3.Dtos.StudentByCityDto;
+import com.example.tp3.Dtos.StudentUpdateDto;
 import com.example.tp3.Models.Genre;
 import com.example.tp3.Models.Student;
 import com.example.tp3.Services.StudentService;
@@ -41,13 +42,13 @@ public class StudentController {
     
     
     @PostMapping("/")
-    public Student save(@RequestBody StudentAddOrUpdateDto dto){
+    public Student save(@RequestBody StudentAddDto dto){
         return service.save(dto);
     }
     
       
     @PutMapping("/{id}")
-    public Student update(@RequestBody StudentAddOrUpdateDto dto, @PathVariable Integer id){
+    public Student update(@RequestBody StudentUpdateDto dto, @PathVariable Integer id){
         return service.update(dto, id);
     }
     
@@ -57,7 +58,7 @@ public class StudentController {
     }
 
     @PostMapping("/service-a")
-    public Student save_a(@RequestBody StudentAddOrUpdateDto dto){
+    public Student save_a(@RequestBody StudentAddDto dto){
         return service.save(dto);
     }
 
