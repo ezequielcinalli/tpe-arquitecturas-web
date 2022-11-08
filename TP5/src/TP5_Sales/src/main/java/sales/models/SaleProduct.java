@@ -19,7 +19,7 @@ public class SaleProduct {
     private Sale sale;
 
 	@MapsId("productId")
-	@Column(name = "careerId")
+	@Column(name = "productId")
 	private int productId;
 
     @Column(nullable = false)
