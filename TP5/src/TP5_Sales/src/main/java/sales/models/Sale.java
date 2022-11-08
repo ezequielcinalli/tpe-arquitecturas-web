@@ -1,6 +1,6 @@
 package sales.models;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -33,16 +33,14 @@ public class Sale {
     	super();
 	}
     
-    public Sale(int id, int customerId, Date date) {
+    public Sale(int customerId, Date date) {
 		super();
-		this.id = id;
 		this.customerId = customerId;
 		this.date = date;
 	}
 
-	public Sale(int id, int customerId, Date date, List<SaleProduct> saleProducts) {
+	public Sale(int customerId, Date date, List<SaleProduct> saleProducts) {
 		super();
-		this.id = id;
 		this.customerId = customerId;
 		this.date = date;
 		this.saleProducts = saleProducts;
@@ -50,10 +48,6 @@ public class Sale {
 
 	public int getId() {
 		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public int getCustomerId() {

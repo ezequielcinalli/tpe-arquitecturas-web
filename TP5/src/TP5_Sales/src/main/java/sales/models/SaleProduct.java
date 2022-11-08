@@ -44,16 +44,8 @@ public class SaleProduct {
 		return sale;
 	}
 
-	public void setSale(Sale sale) {
-		this.sale = sale;
-	}
-
 	public int getProductId() {
 		return productId;
-	}
-
-	public void setProductId(int productId) {
-		this.productId = productId;
 	}
 
 	public int getQuantity() {
