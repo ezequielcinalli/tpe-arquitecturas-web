@@ -15,8 +15,7 @@ public class Customer {
         super();
     }
 
-    public Customer(int id, String name) {
-        this.id = id;
+    public Customer(String name) {
         this.name = name;
     }
 
