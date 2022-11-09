@@ -16,27 +16,27 @@ class LoadDatabase {
 	@Bean
     CommandLineRunner initDatabase(ProductRepository ProductRepository) {
     	return args -> {
-  			var pro1 = new Products("Yerba",800.00);
-            var pro2 = new Products("Harina",300.00);
-            var pro3 = new Products("Arroz",300.00);
-            var pro4 = new Products("Fideos",200.00);
-            var pro5 = new Products("Salchichas",500.00);
-            var pro6 = new Products("Cerveza",400.00);
-            var pro7 = new Products("Atun",500.00);
-            var pro8 = new Products("Mayonesa",500.00);
-            var pro9 = new Products("Aceite",600.00);
-            var pro10 = new Products("Alfajor",100.00);
+  			var pro1 = new Product("Yerba",800.00F);
+            var pro2 = new Product("Harina",300.00F);
+            var pro3 = new Product("Arroz",300.00F);
+            var pro4 = new Product("Fideos",200.00F);
+            var pro5 = new Product("Salchichas",500.00F);
+            var pro6 = new Product("Cerveza",400.00F);
+            var pro7 = new Product("Atun",500.00F);
+            var pro8 = new Product("Mayonesa",500.00F);
+            var pro9 = new Product("Aceite",600.00F);
+            var pro10 = new Product("Alfajor",100.00F);
 
-			log.info("Preloading " + productRepository.save(pro1));
-			log.info("Preloading " + productRepository.save(pro2));
-			log.info("Preloading " + productRepository.save(pro3));
-			log.info("Preloading " + productRepository.save(pro4));
-			log.info("Preloading " + productRepository.save(pro5));
-			log.info("Preloading " + productRepository.save(pro6));
-			log.info("Preloading " + productRepository.save(pro7));
-			log.info("Preloading " + productRepository.save(pro8));
-			log.info("Preloading " + productRepository.save(pro9));
-			log.info("Preloading " + productRepository.save(pro10));
+			log.info("Preloading " + ProductRepository.save(pro1));
+			log.info("Preloading " + ProductRepository.save(pro2));
+			log.info("Preloading " + ProductRepository.save(pro3));
+			log.info("Preloading " + ProductRepository.save(pro4));
+			log.info("Preloading " + ProductRepository.save(pro5));
+			log.info("Preloading " + ProductRepository.save(pro6));
+			log.info("Preloading " + ProductRepository.save(pro7));
+			log.info("Preloading " + ProductRepository.save(pro8));
+			log.info("Preloading " + ProductRepository.save(pro9));
+			log.info("Preloading " + ProductRepository.save(pro10));
 			
         };
     }

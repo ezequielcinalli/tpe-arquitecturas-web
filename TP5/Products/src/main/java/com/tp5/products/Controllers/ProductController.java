@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.tp5.products.Dtos.ProductAddDto;
+import com.tp5.products.Dtos.ProductUpdateDto;
 import com.tp5.products.Models.Product;
 import com.tp5.products.Services.ProductService;
 
@@ -45,7 +47,7 @@ public class ProductController {
 	    }
 	    
 	    @PutMapping("/{ID}")
-	    public Customer update(@RequestBody ProductUpdateDto Product, @PathVariable Integer ID){
+	    public Product update(@RequestBody ProductUpdateDto Product, @PathVariable Integer ID){
 	    	return service.update(Product, ID);                
 	    }
 	    
