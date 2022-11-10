@@ -18,7 +18,7 @@ import sales.models.SaleProduct;
 import sales.services.SaleProductService;
 
 @RestController
-@RequestMapping("SaleProducts")
+@RequestMapping("sales-products")
 public class SaleProductController {
 	    
     @Autowired
