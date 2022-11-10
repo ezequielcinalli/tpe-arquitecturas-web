@@ -27,7 +27,8 @@ public class SaleProductService {
     }
     
     public Optional<SaleProduct> findById(Integer saleId, Integer productId){
-        return repository.findById(new SaleProductId(saleId, productId));
+    	Sale sale = new Sale(); // TODO get actual sale with dto.saleId
+        return repository.findById(new SaleProductId(sale, productId));
     }
     
     public SaleProduct save(SaleProductAddDto dto){
@@ -37,14 +38,16 @@ public class SaleProductService {
     }
     
     public SaleProduct update(Integer saleId, Integer productId, SaleProductUpdateDto dto) {
-    	SaleProduct SaleProduct = repository.getReferenceById(new SaleProductId(saleId, productId));
+    	Sale sale = new Sale(); // TODO get actual sale with dto.saleId
+    	SaleProduct SaleProduct = repository.getReferenceById(new SaleProductId(sale, productId));
         SaleProduct.setQuantity(dto.quantity);
         SaleProduct.setUnitPrice(dto.unitPrice);
         return repository.save(SaleProduct);
     }
     
     public void deleteById(Integer saleId, Integer productId){
-        repository.deleteById(new SaleProductId(saleId, productId));
+    	Sale sale = new Sale(); // TODO get actual sale with dto.saleId
+        repository.deleteById(new SaleProductId(sale, productId));
     }
 
 }

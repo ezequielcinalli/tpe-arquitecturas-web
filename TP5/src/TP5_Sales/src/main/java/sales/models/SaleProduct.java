@@ -1,25 +1,23 @@
 package sales.models;
 
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
 
 @Entity
+@IdClass(SaleProductId.class) 
 public class SaleProduct {
 	
-	@EmbeddedId
-    private SaleProductId key = new SaleProductId();
-	
-	@MapsId("saleId")
-    @ManyToOne
-    @JoinColumn(name = "saleId", referencedColumnName = "id")
+	@Id
+	@ManyToOne(optional = false) 
+    @JoinColumn(nullable = false)
     private Sale sale;
 
-	@MapsId("productId")
-	@Column(name = "productId")
+	@Id
+    @Column(nullable = false)
 	private int productId;
 
     @Column(nullable = false)
@@ -40,14 +38,6 @@ public class SaleProduct {
 		this.unitPrice = unitPrice;
 	}
 
-	public Sale getSale() {
-		return sale;
-	}
-
-	public int getProductId() {
-		return productId;
-	}
-
 	public int getQuantity() {
 		return quantity;
 	}
@@ -62,12 +52,6 @@ public class SaleProduct {
 
 	public void setUnitPrice(float unitPrice) {
 		this.unitPrice = unitPrice;
-	}
-
-	@Override
-	public String toString() {
-		return "SaleProduct [sale=" + sale + ", productId=" + productId + ", quantity=" + quantity + ", unitPrice="
-				+ unitPrice + "]";
 	}
 	
 }
