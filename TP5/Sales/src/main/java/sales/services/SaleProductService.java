@@ -9,45 +9,45 @@ import sales.dtos.SaleProductAddDto;
 import sales.dtos.SaleProductUpdateDto;
 import sales.models.Sale;
 import sales.models.SaleProduct;
-import sales.models.SaleProductId;
 import sales.repositories.SaleProductRepository;
+import sales.repositories.SaleRepository;
 
 @Service
 public class SaleProductService {
 	
     @Autowired
-    private final SaleProductRepository repository;
+    private final SaleProductRepository saleProductRepository;
+    @Autowired
+    private final SaleRepository saleRepository;
 
-    public SaleProductService(SaleProductRepository repository){
-        this.repository = repository;
+    public SaleProductService(SaleProductRepository repository, SaleRepository saleRepository){
+        this.saleProductRepository = repository;
+        this.saleRepository = saleRepository;
     }
     
     public Iterable<SaleProduct> findAll(){
-        return repository.findAll();
+        return saleProductRepository.findAll();
     }
     
-    public Optional<SaleProduct> findById(Integer saleId, Integer productId){
-    	Sale sale = new Sale(); // TODO get actual sale with dto.saleId
-        return repository.findById(new SaleProductId(sale, productId));
+    public Optional<SaleProduct> findById(Integer saleProductId){
+        return saleProductRepository.findById(saleProductId);
     }
     
     public SaleProduct save(SaleProductAddDto dto){
-    	Sale sale = new Sale(); // TODO get actual sale with dto.saleId
+    	Sale sale = saleRepository.getReferenceById(dto.saleId);
     	SaleProduct SaleProduct = new SaleProduct(sale, dto.productId, dto.quantity, dto.unitPrice);
-        return repository.save(SaleProduct);
+        return saleProductRepository.save(SaleProduct);
     }
     
-    public SaleProduct update(Integer saleId, Integer productId, SaleProductUpdateDto dto) {
-    	Sale sale = new Sale(); // TODO get actual sale with dto.saleId
-    	SaleProduct SaleProduct = repository.getReferenceById(new SaleProductId(sale, productId));
+    public SaleProduct update(Integer saleProductId, SaleProductUpdateDto dto) {
+    	SaleProduct SaleProduct = saleProductRepository.getReferenceById(saleProductId);
         SaleProduct.setQuantity(dto.quantity);
         SaleProduct.setUnitPrice(dto.unitPrice);
-        return repository.save(SaleProduct);
+        return saleProductRepository.save(SaleProduct);
     }
     
-    public void deleteById(Integer saleId, Integer productId){
-    	Sale sale = new Sale(); // TODO get actual sale with dto.saleId
-        repository.deleteById(new SaleProductId(sale, productId));
+    public void deleteById(Integer saleProductId){
+        saleProductRepository.deleteById(saleProductId);
     }
 
 }

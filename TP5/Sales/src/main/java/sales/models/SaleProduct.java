@@ -33,6 +33,10 @@ public class SaleProduct {
 		this.quantity = quantity;
 		this.unitPrice = unitPrice;
 	}
+	
+	public int getSaleId() {
+		return sale.getId();
+	}
 
 	public int getQuantity() {
 		return quantity;
@@ -48,6 +52,14 @@ public class SaleProduct {
 
 	public void setUnitPrice(float unitPrice) {
 		this.unitPrice = unitPrice;
+	}
+
+	public int getId() {
+		return id;
+	}
+	
+	public int getProductId() {
+		return productId;
 	}
 	
 }

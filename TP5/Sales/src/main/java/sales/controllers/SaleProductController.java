@@ -33,9 +33,9 @@ public class SaleProductController {
         return service.findAll();
     }
     
-    @GetMapping("/{saleId}/{productId}")
-    public Optional<SaleProduct> get(@PathVariable Integer saleId, @PathVariable Integer productId){
-        return service.findById(saleId, productId);
+    @GetMapping("/{saleProductId}")
+    public Optional<SaleProduct> get(@PathVariable Integer saleProductId){
+        return service.findById(saleProductId);
     }
     
     @PostMapping("/")
@@ -43,14 +43,14 @@ public class SaleProductController {
         return service.save(saleProductAddDto);
     }
     
-    @PutMapping("/{saleId}/{productId}")
-    public SaleProduct update(@RequestBody SaleProductUpdateDto saleProductUpdateDto, @PathVariable Integer saleId, @PathVariable Integer productId){
-    	return service.update(saleId, productId, saleProductUpdateDto);                
+    @PutMapping("/{saleProductId}")
+    public SaleProduct update(@RequestBody SaleProductUpdateDto saleProductUpdateDto, @PathVariable Integer saleProductId){
+    	return service.update(saleProductId, saleProductUpdateDto);                
     }
     
-    @DeleteMapping("/{saleId}/{productId}")
-    public void delete(@PathVariable Integer saleId, @PathVariable Integer productId){
-        service.deleteById(saleId, productId);
+    @DeleteMapping("/{saleProductId}")
+    public void delete(@PathVariable Integer saleProductId){
+        service.deleteById(saleProductId);
     }
     
 }
