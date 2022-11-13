@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import sales.dtos.DailySalesTotalDto;
 import sales.dtos.SaleSaveDto;
 import sales.models.Sale;
 import sales.services.SaleService;
@@ -55,6 +56,11 @@ public class SaleController {
     @GetMapping("/amount/{customerId}")
     public float getCustomerTotalAmountSpent(@PathVariable Integer customerId){
         return service.getCustomerTotalAmountSpent(customerId);
+    }
+    
+    @GetMapping("/daily")
+    public Iterable<DailySalesTotalDto> getDailySales(){
+        return service.getDailySales();
     }
     
 }

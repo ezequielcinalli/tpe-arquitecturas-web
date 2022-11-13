@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import sales.dtos.DailySalesTotalDto;
 import sales.dtos.SaleSaveDto;
 import sales.models.Sale;
 import sales.repositories.SaleRepository;
@@ -45,6 +46,10 @@ public class SaleService {
     
     public float getCustomerTotalAmountSpent(int customerId) {
     	return repository.getCustomerTotalAmountSpent(customerId);
+    }
+    
+    public Iterable<DailySalesTotalDto> getDailySales(){
+        return repository.getDailySales();
     }
 
 }
