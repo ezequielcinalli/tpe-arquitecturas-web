@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import sales.dtos.DailySalesTotalDto;
+import sales.dtos.ProductMostSoldDto;
 import sales.dtos.SaleSaveDto;
 import sales.models.Sale;
 import sales.repositories.SaleRepository;
@@ -50,6 +51,10 @@ public class SaleService {
     
     public Iterable<DailySalesTotalDto> getDailySales(){
         return repository.getDailySales();
+    }
+    
+    public ProductMostSoldDto getProductMostSold(){
+        return repository.getProductsMostSold().get(0);
     }
 
 }

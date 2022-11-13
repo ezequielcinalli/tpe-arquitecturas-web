@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import sales.dtos.DailySalesTotalDto;
+import sales.dtos.ProductMostSoldDto;
 import sales.dtos.SaleSaveDto;
 import sales.models.Sale;
 import sales.services.SaleService;
@@ -61,6 +62,11 @@ public class SaleController {
     @GetMapping("/daily")
     public Iterable<DailySalesTotalDto> getDailySales(){
         return service.getDailySales();
+    }
+    
+    @GetMapping("/product-most-sold")
+    public ProductMostSoldDto getProductMostSold(){
+        return service.getProductMostSold();
     }
     
 }

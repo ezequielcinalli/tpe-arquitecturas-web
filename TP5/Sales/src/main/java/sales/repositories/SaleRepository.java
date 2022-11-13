@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import sales.dtos.DailySalesTotalDto;
+import sales.dtos.ProductMostSoldDto;
 import sales.models.Sale;
 
 @Repository
@@ -19,8 +20,7 @@ public interface SaleRepository extends JpaRepository<Sale, Integer> {
     @Query("SELECT new sales.dtos.DailySalesTotalDto(s.date, SUM(sp.quantity * sp.unitPrice)) FROM Sale s JOIN SaleProduct sp ON s.id = sp.sale.id GROUP BY s.date")
     public List<DailySalesTotalDto> getDailySales();
     
-    // TODO actual query
-    //@Query("SELECT new sales.dtos.BestSellingProductDto(s.customerId,s.date) FROM Sale s")
-    //public BestSellingProductDto getBestSellingProduct();
+    @Query("SELECT new sales.dtos.ProductMostSoldDto(sp.productId, SUM(sp.quantity)) FROM Sale s JOIN SaleProduct sp ON s.id = sp.sale.id GROUP BY sp.productId ORDER BY SUM(sp.quantity) DESC")
+    public List<ProductMostSoldDto> getProductsMostSold();
     
 }
