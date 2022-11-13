@@ -24,6 +24,10 @@ Cada entrega de trabajo practico esta creado como un proyecto java/maven dentro 
 
 [Link instrucciones y aclaraciones](https://github.com/ezequielcinalli/tpe-arquitecturas-web/blob/main/TP3/README.md)
 
+## Cuarta entrega
+
+[Link pdf](https://github.com/ezequielcinalli/tpe-arquitecturas-web/blob/main/TP4/TP4.pdf)
+
 ## Quinta entrega
 
 [Link instrucciones y aclaraciones](https://github.com/ezequielcinalli/tpe-arquitecturas-web/blob/main/TP5/README.md)
