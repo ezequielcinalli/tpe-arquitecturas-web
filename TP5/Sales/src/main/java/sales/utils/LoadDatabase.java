@@ -51,6 +51,7 @@ class LoadDatabase {
   			var saleProduct8 = new SaleProduct(sale8, 8, 3, 1100);
   			var saleProduct9 = new SaleProduct(sale9, 9, 4, 1300);
   			var saleProduct10 = new SaleProduct(sale10, 10, 2, 1450);
+  			var saleProduct11 = new SaleProduct(sale1, 2, 3, 2000);
   			log.info("Preloading " + saleProductRepository.save(saleProduct1));
 			log.info("Preloading " + saleProductRepository.save(saleProduct2));
 			log.info("Preloading " + saleProductRepository.save(saleProduct3));
@@ -61,6 +62,8 @@ class LoadDatabase {
 			log.info("Preloading " + saleProductRepository.save(saleProduct8));
 			log.info("Preloading " + saleProductRepository.save(saleProduct9));
 			log.info("Preloading " + saleProductRepository.save(saleProduct10));
+			log.info("Preloading " + saleProductRepository.save(saleProduct11));
+			// sales/amount/1 should return saleProduct1 + saleProduct11 = 8000
         };
     }
 }

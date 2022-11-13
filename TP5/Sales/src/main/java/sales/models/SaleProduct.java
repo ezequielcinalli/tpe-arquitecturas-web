@@ -9,8 +9,8 @@ public class SaleProduct {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@ManyToOne(optional = false) 
-    @JoinColumn(nullable = false)
+	@ManyToOne(optional = false)
+	@JoinColumn(nullable = false)
     private Sale sale;
 
     @Column(nullable = false)

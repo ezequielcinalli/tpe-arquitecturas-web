@@ -19,15 +19,15 @@ public class SaleService {
         this.repository = repository;
     }
     
-    public Iterable<Sale> findAll(){
+    public Iterable<Sale> findAll() {
         return repository.findAll();
     }
     
-    public Optional<Sale> findById(Integer id){
+    public Optional<Sale> findById(int id) {
         return repository.findById(id);
     }
     
-    public Sale save(SaleSaveDto dto){
+    public Sale save(SaleSaveDto dto) {
     	Sale sale = new Sale(dto.customerId, dto.date);
         return repository.save(sale);
     }
@@ -39,8 +39,12 @@ public class SaleService {
         return repository.save(sale);
     }
     
-    public void deleteById(Integer id){
+    public void deleteById(int id) {
         repository.deleteById(id);
+    }
+    
+    public float getCustomerTotalAmountSpent(int customerId) {
+    	return repository.getCustomerTotalAmountSpent(customerId);
     }
 
 }

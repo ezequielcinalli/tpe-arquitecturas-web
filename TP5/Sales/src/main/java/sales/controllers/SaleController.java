@@ -52,4 +52,9 @@ public class SaleController {
         service.deleteById(id);
     }
     
+    @GetMapping("/amount/{customerId}")
+    public float getCustomerTotalAmountSpent(@PathVariable Integer customerId){
+        return service.getCustomerTotalAmountSpent(customerId);
+    }
+    
 }
