@@ -10,12 +10,15 @@ public class Product {
 
     @Column(nullable = false)
     private String name;
-    
    
     @Column(nullable = false)
     private float price;
     
-    public Product(String name, float price) {
+    public Product() {
+		super();
+	}
+
+	public Product(String name, float price) {
 		this.name = name;
 		this.price = price;
 	}
