@@ -21,9 +21,13 @@ public class SaleService {
 	
     @Autowired
     private final SaleRepository repository;
+    
+    @Autowired
+    private final AuthService authService;
 
-    public SaleService(SaleRepository repository){
+    public SaleService(SaleRepository repository, AuthService authService){
         this.repository = repository;
+        this.authService = authService;
     }
     
     public Iterable<Sale> findAll() {
@@ -60,10 +64,12 @@ public class SaleService {
     
     public ProductMostSoldDto getProductMostSold(){
     	var dto = repository.getProductsMostSold().get(0);
+    	var internalToken = authService.getInternalJwtToken();
     	
     	Mono<ProductDto> productMono = WebClient
     		    .create(PRODUCTS_BASE_URL + "/products/" + dto.productId)
     		    .get()
+    		    .header("Authorization", "Bearer " + internalToken)
     		    .retrieve()
     		    .bodyToMono(ProductDto.class);
     	
