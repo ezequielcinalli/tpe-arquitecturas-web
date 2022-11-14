@@ -20,7 +20,10 @@ import com.tp5.products.Dtos.ProductUpdateDto;
 import com.tp5.products.Models.Product;
 import com.tp5.products.Services.ProductService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
+@Tag(name = "Servicio de Productos", description="Servicios de API productos")
 @RequestMapping("products")
 public class ProductController {
 	    

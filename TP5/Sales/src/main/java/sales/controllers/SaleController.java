@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import sales.dtos.DailySalesTotalDto;
 import sales.dtos.ProductMostSoldDto;
 import sales.dtos.SaleSaveDto;
@@ -19,6 +20,7 @@ import sales.models.Sale;
 import sales.services.SaleService;
 
 @RestController
+@Tag(name = "Servicio de ventas", description="Servicios de API ventas")
 @RequestMapping("sales")
 public class SaleController {
 	    

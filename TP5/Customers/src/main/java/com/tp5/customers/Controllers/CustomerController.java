@@ -21,7 +21,10 @@ import com.tp5.customers.Dtos.CustomerUpdateDto;
 import com.tp5.customers.Models.Customer;
 import com.tp5.customers.Services.CustomerService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
+@Tag(name = "Servicio de clientes", description="Servicios de API clientes")
 @RequestMapping("customers")
 public class CustomerController {
 	    

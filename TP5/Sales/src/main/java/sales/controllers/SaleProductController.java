@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import sales.dtos.SaleProductAddDto;
 import sales.dtos.SaleProductUpdateDto;
 import sales.models.SaleProduct;
 import sales.services.SaleProductService;
 
 @RestController
+@Tag(name = "Servicio de detalle de ventas", description="Servicios de API detalles de ventas de productos")
 @RequestMapping("sales-products")
 public class SaleProductController {
 	    
