@@ -28,8 +28,9 @@ public class SalesApplication {
 			http.csrf().disable()
 				.addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
 				.authorizeRequests()
-				.antMatchers(HttpMethod.POST, "/auth/sign-in").permitAll()
-				.anyRequest().authenticated();
+				.antMatchers( "/sales/**").authenticated()
+					.antMatchers( "/sales-products/**").authenticated()
+				.anyRequest().permitAll();
 		}
 	}
 
