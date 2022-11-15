@@ -3,7 +3,11 @@ package com.tp5.customers.Controllers;
 import java.util.ArrayList;
 import java.util.Optional;
 
+import com.tp5.customers.Services.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,10 +34,13 @@ public class CustomerController {
 	    
 	    @Autowired
 	    private final CustomerService service;
+		@Autowired
+		private final AuthService authService;
 	    
-	    public CustomerController(CustomerService service){
-	       this.service = service; 
-	    }
+	    public CustomerController(CustomerService service, AuthService authService){
+	       	this.service = service;
+			this.authService = authService;
+		}
 	    
 	    @GetMapping("/")
 	    public Iterable<Customer> getCarees(){
@@ -64,15 +71,17 @@ public class CustomerController {
 		public Iterable<CustomerReportDto> getPurchasesReport() {
 			ArrayList<Customer> customers = (ArrayList<Customer>) service.findAll();
 			ArrayList<CustomerReportDto> result = new ArrayList<CustomerReportDto>();
+			var internalToken = authService.getInternalJwtToken();
 
 			RestTemplate restTemplate = new RestTemplate();
+			HttpHeaders headers = new HttpHeaders();
+			HttpEntity<String> entity = new HttpEntity<>("body", headers);
+			headers.add("Authorization", "Bearer " + internalToken);
 			String resourceUrl = "http://localhost:9001/sales/amount/";
+			
 			for (Customer c : customers) {
-				/*
-				 * ResponseEntity<String> response = restTemplate.getForEntity(resourceUrl +
-				 * c.getId() , String.class); String totalJson = response.getBody();
-				 */
-				float total = restTemplate.getForObject(resourceUrl + c.getId(), float.class);
+				ResponseEntity<Float> totalResponse = restTemplate.exchange(resourceUrl + c.getId(), HttpMethod.GET, entity, float.class);
+				float total = totalResponse.getBody();
 				CustomerReportDto actualCustomer = new CustomerReportDto(c.getName(), total);
 				result.add(actualCustomer);
 			}
