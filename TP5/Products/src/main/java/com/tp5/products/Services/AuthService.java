@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import products.dtos.SignInDto;
-import products.dtos.SignInResultDto;
+import com.tp5.products.Dtos.SignInDto;
+import com.tp5.products.Dtos.SignInResultDto;
 
 @Service
 public class AuthService {

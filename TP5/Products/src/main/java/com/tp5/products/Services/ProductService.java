@@ -35,7 +35,7 @@ public class ProductService {
 	public Product update(ProductUpdateDto Product, Integer ID){
 	    Product oldCustomer = findById(ID).get();
 	    oldCustomer.setName(Product.name);
-		oldCustomer.setPrice(Product.price)
+		oldCustomer.setPrice(Product.price);
 	    return repository.save(oldCustomer);
 	}
 	

@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import sales.security.JWTAuthorizationFilter;
+import com.tp5.products.Security.JWTAuthorizationFilter;
 
 @SuppressWarnings("deprecation")
 

@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
-import sales.dtos.SignInDto;
-import sales.dtos.SignInResultDto;
-import sales.services.AuthService;
+import com.tp5.products.Dtos.SignInDto;
+import com.tp5.products.Dtos.SignInResultDto;
+import com.tp5.products.Services.AuthService;
 
 @RestController
 @Tag(name = "Servicio de autenticación", description = "Servicios de API autenticación")
