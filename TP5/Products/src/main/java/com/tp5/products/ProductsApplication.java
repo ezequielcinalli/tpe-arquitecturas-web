@@ -30,8 +30,8 @@ public class ProductsApplication {
 			http.csrf().disable()
 				.addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
 				.authorizeRequests()
-				.antMatchers(HttpMethod.POST, "/auth/sign-in").permitAll()
-				.anyRequest().authenticated();
+				.antMatchers("/products/**").authenticated()
+				.anyRequest().permitAll();
 		}
 	}
 

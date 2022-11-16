@@ -3,6 +3,7 @@ package com.tp5.products.Controllers;
 import java.util.ArrayList;
 import java.util.Optional;
 
+import com.tp5.products.Services.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,9 +30,12 @@ public class ProductController {
 	    
 	    @Autowired
 	    private final ProductService service;
+		@Autowired
+		private final AuthService authService;
 	    
-	    public ProductController(ProductService service){
+	    public ProductController(ProductService service, AuthService authService){
 	       this.service = service; 
+		   this.authService = authService;
 	    }
 	    
 	    @GetMapping("/")
