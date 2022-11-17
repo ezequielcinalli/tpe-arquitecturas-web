@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import com.tp5.customers.Services.AuthService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -28,7 +29,7 @@ import com.tp5.customers.Services.CustomerService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@Tag(name = "Servicio de clientes", description="Servicios de API clientes")
+@Api(tags = "customers", description = "Servicio de clientes")
 @RequestMapping("customers")
 public class CustomerController {
 	    
@@ -43,7 +44,7 @@ public class CustomerController {
 		}
 	    
 	    @GetMapping("/")
-	    public Iterable<Customer> getCarees(){
+	    public Iterable<Customer> getCustomers(){
 	        return service.findAll();
 	    }
 	    

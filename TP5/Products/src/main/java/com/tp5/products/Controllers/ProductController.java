@@ -1,11 +1,9 @@
 package com.tp5.products.Controllers;
 
-import java.util.ArrayList;
 import java.util.Optional;
-
 import com.tp5.products.Services.AuthService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,17 +12,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
-
 import com.tp5.products.Dtos.ProductAddDto;
 import com.tp5.products.Dtos.ProductUpdateDto;
 import com.tp5.products.Models.Product;
 import com.tp5.products.Services.ProductService;
 
-import io.swagger.v3.oas.annotations.tags.Tag;
-
 @RestController
-@Tag(name = "Servicio de Productos", description="Servicios de API productos")
+@Api(tags = "products", description = "Servicio de Productos")
 @RequestMapping("products")
 public class ProductController {
 	    
