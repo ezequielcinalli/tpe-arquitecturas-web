@@ -19,7 +19,7 @@ import sales.models.Sale;
 import sales.services.SaleService;
 
 @RestController
-@Api(tags = "auth", description = "Servicio de ventas")
+@Api(tags = "sales", description = "Servicio de ventas")
 @RequestMapping("sales")
 public class SaleController {
 	    

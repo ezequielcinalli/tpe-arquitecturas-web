@@ -18,7 +18,7 @@ import sales.models.SaleProduct;
 import sales.services.SaleProductService;
 
 @RestController
-@Api(tags = "auth", description = "Servicio de detalle de ventas")
+@Api(tags = "sales-products", description = "Servicio de detalle de ventas")
 @RequestMapping("sales-products")
 public class SaleProductController {
 	    
