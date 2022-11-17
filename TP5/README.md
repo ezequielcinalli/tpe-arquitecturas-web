@@ -9,6 +9,8 @@ Para probar el proyecto es necesario ejecutar los 3 proyectos, los cuales corren
 A la hora de importar los proyectos, cada microservicio esta creado como un proyecto independiente dentro de su respectiva carpeta.
 
 **Swagger de cada microservicio:**
-http://localhost:9000/swagger-ui/index.html.
-http://localhost:9001/swagger-ui/index.html.
-http://localhost:9002/swagger-ui/index.html.
+http://localhost:9000/swagger-ui/index.html
+
+http://localhost:9001/swagger-ui/index.html
+
+http://localhost:9002/swagger-ui/index.html
