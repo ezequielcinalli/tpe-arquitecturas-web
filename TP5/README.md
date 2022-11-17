@@ -15,3 +15,5 @@ http://localhost:9000/swagger-ui/index.html
 http://localhost:9001/swagger-ui/index.html
 
 http://localhost:9002/swagger-ui/index.html
+
+Para probar los endpoints, hay que generar el token en el controlador auth dentro del swagger, el cual luego hay que pegarlo dentro del boton authorize con la palabra "Bearer" separado por un espacio el token.
