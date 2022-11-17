@@ -43,7 +43,7 @@ public class CustomerController {
 		}
 	    
 	    @GetMapping("/")
-	    public Iterable<Customer> getCarees(){
+	    public Iterable<Customer> getCustomers(){
 	        return service.findAll();
 	    }
 	    
